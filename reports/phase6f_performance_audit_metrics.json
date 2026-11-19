@@ -1,0 +1,356 @@
+{
+  "timestamp": "2026-11-20 02:51:21",
+  "latency_audit": {
+    "distributions": {
+      "capture_wait_ms": {
+        "count": 350,
+        "mean": 21.966182857142858,
+        "median": 20.676499999999997,
+        "std": 20.491975761740562,
+        "p90": 42.73810000000002,
+        "p95": 53.083,
+        "p99": 56.500919999999994,
+        "min": 1.433,
+        "max": 70.786
+      },
+      "capture_interval_ms": {
+        "count": 350,
+        "mean": 33.33767999999999,
+        "median": 31.552999999999997,
+        "std": 20.340906550626453,
+        "p90": 53.9347,
+        "p95": 64.7519,
+        "p99": 67.48987,
+        "min": 1.847,
+        "max": 82.661
+      },
+      "mediapipe_ms": {
+        "count": 350,
+        "mean": 10.835274285714286,
+        "median": 10.676,
+        "std": 0.9031962595643517,
+        "p90": 12.109300000000001,
+        "p95": 12.685400000000001,
+        "p99": 13.20008,
+        "min": 9.421,
+        "max": 14.968
+      },
+      "preproc_ms": {
+        "count": 350,
+        "mean": 0.14739714285714287,
+        "median": 0.132,
+        "std": 0.05499606125888467,
+        "p90": 0.22220000000000004,
+        "p95": 0.27755,
+        "p99": 0.33953,
+        "min": 0.089,
+        "max": 0.35
+      },
+      "model_only_invoke_ms": {
+        "count": 350,
+        "mean": 0.13336857142857142,
+        "median": 0.125,
+        "std": 0.038042031282321684,
+        "p90": 0.156,
+        "p95": 0.1751,
+        "p99": 0.3041999999999998,
+        "min": 0.101,
+        "max": 0.446
+      },
+      "runtime_wrapper_ms": {
+        "count": 350,
+        "mean": 0.31035428571428575,
+        "median": 0.2975,
+        "std": 0.07092386790697906,
+        "p90": 0.37120000000000003,
+        "p95": 0.4467500000000001,
+        "p99": 0.5735299999999999,
+        "min": 0.225,
+        "max": 0.739
+      },
+      "stabilizer_ms": {
+        "count": 350,
+        "mean": 0.00384,
+        "median": 0.003,
+        "std": 0.014706394921119564,
+        "p90": 0.004,
+        "p95": 0.005,
+        "p99": 0.007019999999999982,
+        "min": 0.002,
+        "max": 0.277
+      },
+      "pipeline_compute_ms": {
+        "count": 350,
+        "mean": 11.296885714285715,
+        "median": 11.1415,
+        "std": 0.9206965710879447,
+        "p90": 12.5142,
+        "p95": 13.1624,
+        "p99": 13.81118,
+        "min": 9.856,
+        "max": 15.426
+      },
+      "total_e2e_ms": {
+        "count": 350,
+        "mean": 33.35218571428571,
+        "median": 32.624,
+        "std": 20.7542677830809,
+        "p90": 55.42130000000001,
+        "p95": 64.636,
+        "p99": 68.13715999999998,
+        "min": 11.605,
+        "max": 82.827
+      }
+    },
+    "variance_decomposition": {
+      "var_total_e2e": 430.7396312118297,
+      "var_capture_wait": 419.92107061976265,
+      "var_pipeline_compute": 0.8476821760130987,
+      "two_cov_wait_compute": 9.892542139336888,
+      "capture_wait_variance_share_pct": 97.48837585210572,
+      "pipeline_compute_variance_share_pct": 0.19679688484392663,
+      "covariance_share_pct": 2.296640806304614
+    },
+    "correlations": {
+      "capture_wait_vs_total_e2e": 0.9990714637000261,
+      "pipeline_compute_vs_total_e2e": 0.3034823961625973,
+      "capture_wait_vs_capture_interval": 0.9985462245559021
+    },
+    "bimodal_analysis": {
+      "fast_wait_count": 174,
+      "fast_wait_pct": 49.714285714285715,
+      "fast_wait_mean_ms": 2.02933908045977,
+      "slow_wait_count": 176,
+      "slow_wait_pct": 50.28571428571429,
+      "slow_wait_mean_ms": 41.676471590909095,
+      "two_frame_pair_sum_mean_ms": 66.75830459770116,
+      "two_frame_pair_sum_std_ms": 13.700716115804846,
+      "two_frame_effective_fps": 29.9588195364217
+    }
+  },
+  "threading_audit": {
+    "threads_1": {
+      "threads": 1,
+      "model_only_invoke_ms": {
+        "count": 500,
+        "mean": 0.0744317999924533,
+        "median": 0.07229999755509198,
+        "std": 0.010388243056158743,
+        "p90": 0.07691999635426328,
+        "p95": 0.08293499849969518,
+        "p99": 0.12057599924446524,
+        "min": 0.06979999307077378,
+        "max": 0.1779000012902543
+      },
+      "runtime_wrapper_ms": {
+        "count": 500,
+        "mean": 0.14433259994257241,
+        "median": 0.1384999995934777,
+        "std": 0.028048045611432176,
+        "p90": 0.15330000314861536,
+        "p95": 0.17507500087958755,
+        "p99": 0.2854499962268162,
+        "min": 0.12740000238409266,
+        "max": 0.41149999742629007
+      },
+      "slowdown_vs_single_thread_pct": 0.0
+    },
+    "threads_2": {
+      "threads": 2,
+      "model_only_invoke_ms": {
+        "count": 500,
+        "mean": 0.12240099992777687,
+        "median": 0.11029999586753547,
+        "std": 0.07000607798690374,
+        "p90": 0.15002000000094995,
+        "p95": 0.1652449984248959,
+        "p99": 0.2848089981125665,
+        "min": 0.09310000314144418,
+        "max": 1.4931999976397492
+      },
+      "runtime_wrapper_ms": {
+        "count": 500,
+        "mean": 0.20975720016576815,
+        "median": 0.1831499976105988,
+        "std": 0.09846125583836568,
+        "p90": 0.2797300046950113,
+        "p95": 0.3455750025750601,
+        "p99": 0.5045049998443574,
+        "min": 0.152900000102818,
+        "max": 1.8570000029285438
+      },
+      "slowdown_vs_single_thread_pct": 64.4471851281135
+    },
+    "threads_4": {
+      "threads": 4,
+      "model_only_invoke_ms": {
+        "count": 500,
+        "mean": 0.13015140024072025,
+        "median": 0.12040000001434237,
+        "std": 0.03723652254843459,
+        "p90": 0.1591800028108992,
+        "p95": 0.18027000405709254,
+        "p99": 0.253049003295018,
+        "min": 0.10150000161956996,
+        "max": 0.5127999975229613
+      },
+      "runtime_wrapper_ms": {
+        "count": 500,
+        "mean": 0.2182932001305744,
+        "median": 0.1973999969777651,
+        "std": 0.06291495395640574,
+        "p90": 0.2884400048060343,
+        "p95": 0.31405500449181994,
+        "p99": 0.5125109986693128,
+        "min": 0.1616000008652918,
+        "max": 0.6699000005028211
+      },
+      "slowdown_vs_single_thread_pct": 74.85993923822397
+    },
+    "threads_8": {
+      "threads": 8,
+      "model_only_invoke_ms": {
+        "count": 500,
+        "mean": 0.1570616000390146,
+        "median": 0.12844999946537428,
+        "std": 0.15291158580533085,
+        "p90": 0.198569997883169,
+        "p95": 0.25171000270347577,
+        "p99": 0.5874739991850212,
+        "min": 0.10990000009769574,
+        "max": 3.037899994524196
+      },
+      "runtime_wrapper_ms": {
+        "count": 500,
+        "mean": 0.2617785998299951,
+        "median": 0.2153999957954511,
+        "std": 0.1948613949022348,
+        "p90": 0.34171000152127823,
+        "p95": 0.4654299973481098,
+        "p99": 0.9054740030114771,
+        "min": 0.18600000475998968,
+        "max": 3.3803000042098574
+      },
+      "slowdown_vs_single_thread_pct": 111.01410963450995
+    }
+  },
+  "memory_audit": {
+    "initial_active_kb": 75.82421875,
+    "initial_peak_kb": 133.0048828125,
+    "final_active_kb": 243.5751953125,
+    "final_peak_kb": 469.26953125,
+    "growth_100_to_1000_kb": 5.3115234375,
+    "bytes_per_frame": 6.043333333333333,
+    "checkpoints": [
+      {
+        "frame": 100,
+        "active_kb": 238.263671875,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 218,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 200,
+        "active_kb": 238.865234375,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 221,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 300,
+        "active_kb": 239.7802734375,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 222,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 400,
+        "active_kb": 240.3642578125,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 223,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 500,
+        "active_kb": 240.841796875,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 224,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 600,
+        "active_kb": 241.3505859375,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 225,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 700,
+        "active_kb": 241.828125,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 226,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 800,
+        "active_kb": 242.3515625,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 227,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 900,
+        "active_kb": 242.8291015625,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 228,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      },
+      {
+        "frame": 1000,
+        "active_kb": 243.3173828125,
+        "peak_kb": 469.26953125,
+        "gc_gen0": 229,
+        "gc_gen1": 0,
+        "gc_gen2": 0
+      }
+    ]
+  },
+  "sustainability_audit": {
+    "compute_drift_slope_ms_per_frame": -0.00028129908932204037,
+    "total_compute_drift_over_run_ms": -0.09845468126271413,
+    "e2e_drift_slope_ms_per_frame": 0.0008684803257867802,
+    "first_50_frames_mean_ms": 11.415019999999997,
+    "last_50_frames_mean_ms": 11.257359999999998,
+    "compute_delta_first_to_last_ms": -0.15765999999999813,
+    "frame_budget_ms": 33.333,
+    "frames_over_budget_count": 0,
+    "frames_over_budget_pct": 0.0,
+    "mean_compute_ms": 11.296885714285715,
+    "compute_headroom_ms": 22.036114285714284,
+    "compute_headroom_pct": 66.10900394718232,
+    "single_core_duty_cycle_pct": 33.89099605281768,
+    "quad_core_cpu_utilization_pct": 8.47274901320442,
+    "octa_core_cpu_utilization_pct": 4.23637450660221
+  },
+  "dropped_frame_audit": {
+    "elapsed_wall_sec": 12.12,
+    "target_fps": 30,
+    "expected_frames": 364,
+    "actual_captured_frames": 350,
+    "dropped_frames_est": 14,
+    "high_interval_frames_count": 32,
+    "preceding_compute_mean_ms": 11.32175,
+    "preceding_compute_max_ms": 13.128,
+    "compute_overrun_frame_drops": 0,
+    "compute_induced_drop_rate_pct": 0.0
+  }
+}

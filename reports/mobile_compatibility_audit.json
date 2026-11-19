@@ -1,0 +1,273 @@
+{
+  "file_path": "models/quantized/echogesture_exp_d_int8.tflite",
+  "file_size_bytes": 135464,
+  "file_size_kb": 132.29,
+  "model_version": 3,
+  "model_description": "MLIR Converted.",
+  "has_custom_ops": false,
+  "has_flex_ops": false,
+  "custom_op_names": [],
+  "operator_codes": [
+    {
+      "index": 0,
+      "builtin_code": 70,
+      "op_name": "EXPAND_DIMS",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.2 (Android 10 / API 29)",
+        "int8_support": "Supported in NNAPI 1.2+; often handled as zero-copy reshape or CPU fallback",
+        "notes": "Native in NNAPI 1.2+. TFLite NNAPI delegate maps to ANEURALNETWORKS_EXPAND_DIMS or folds into adjacent op."
+      }
+    },
+    {
+      "index": 1,
+      "builtin_code": 3,
+      "op_name": "CONV_2D",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.0 (Android 8.1 / API 27)",
+        "int8_support": "NNAPI 1.2+ (Android 10 / API 29) for signed INT8",
+        "notes": "Accelerated on all mobile NPUs/DSPs. Highly optimized."
+      }
+    },
+    {
+      "index": 2,
+      "builtin_code": 18,
+      "op_name": "MUL",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.0 (Android 8.1 / API 27)",
+        "int8_support": "NNAPI 1.2+ (Android 10 / API 29)",
+        "notes": "Fully supported."
+      }
+    },
+    {
+      "index": 3,
+      "builtin_code": 0,
+      "op_name": "ADD",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.0 (Android 8.1 / API 27)",
+        "int8_support": "NNAPI 1.2+ (Android 10 / API 29) for signed INT8",
+        "notes": "Fully supported across Qualcomm Hexagon, Samsung NPU, MediaTek APU."
+      }
+    },
+    {
+      "index": 4,
+      "builtin_code": 22,
+      "op_name": "RESHAPE",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.0 (Android 8.1 / API 27)",
+        "int8_support": "NNAPI 1.0+",
+        "notes": "Metadata-only tensor view operation."
+      }
+    },
+    {
+      "index": 5,
+      "builtin_code": 38,
+      "op_name": "SPACE_TO_BATCH_ND",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.1 (Android 9.0 / API 28)",
+        "int8_support": "NNAPI 1.2+ (Android 10 / API 29)",
+        "notes": "Used for dilated convolution lowering. Some older vendor DSP HALs have boundary padding edge cases."
+      }
+    },
+    {
+      "index": 6,
+      "builtin_code": 37,
+      "op_name": "BATCH_TO_SPACE_ND",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.1 (Android 9.0 / API 28)",
+        "int8_support": "NNAPI 1.2+ (Android 10 / API 29)",
+        "notes": "Used for dilated convolution unspooling. Well supported in NNAPI 1.2+."
+      }
+    },
+    {
+      "index": 7,
+      "builtin_code": 40,
+      "op_name": "MEAN",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.1 (Android 9.0 / API 28)",
+        "int8_support": "NNAPI 1.2+ (Android 10 / API 29)",
+        "notes": "Used for Global Average Pooling. Fully supported."
+      }
+    },
+    {
+      "index": 8,
+      "builtin_code": 9,
+      "op_name": "FULLY_CONNECTED",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.0 (Android 8.1 / API 27)",
+        "int8_support": "NNAPI 1.2+ (Android 10 / API 29)",
+        "notes": "Core dense GEMM operation. Maximum acceleration on DSPs/NPUs."
+      }
+    },
+    {
+      "index": 9,
+      "builtin_code": 25,
+      "op_name": "SOFTMAX",
+      "custom_code": null,
+      "nnapi_support": {
+        "supported": true,
+        "min_nnapi_feature_level": "NNAPI 1.0 (Android 8.1 / API 27)",
+        "int8_support": "NNAPI 1.2+ (Android 10 / API 29)",
+        "notes": "Output probability normalization. Supported."
+      }
+    }
+  ],
+  "operator_counts": {
+    "EXPAND_DIMS": 4,
+    "CONV_2D": 4,
+    "MUL": 4,
+    "ADD": 7,
+    "RESHAPE": 4,
+    "SPACE_TO_BATCH_ND": 2,
+    "BATCH_TO_SPACE_ND": 2,
+    "MEAN": 1,
+    "FULLY_CONNECTED": 2,
+    "SOFTMAX": 1
+  },
+  "total_operators_in_graph": 31,
+  "subgraphs": [
+    {
+      "subgraph_index": 0,
+      "name": "main",
+      "num_operators": 31,
+      "num_tensors": 64,
+      "num_inputs": 1,
+      "num_outputs": 1,
+      "tensor_types": {
+        "INT8": 48,
+        "INT32": 16
+      }
+    }
+  ],
+  "input_contract": {
+    "name": "serving_default_landmark_sequence:0",
+    "index": 0,
+    "shape": [
+      1,
+      64,
+      263
+    ],
+    "dtype": "int8",
+    "scale": 0.05794047564268112,
+    "zero_point": 23,
+    "byte_size": 16832
+  },
+  "output_contract": {
+    "name": "StatefulPartitionedCall_1:0",
+    "index": 63,
+    "shape": [
+      1,
+      40
+    ],
+    "dtype": "int8",
+    "scale": 0.00390625,
+    "zero_point": -128,
+    "byte_size": 40
+  },
+  "inference_benchmark_ms": {
+    "iterations": 200,
+    "mean_ms": 0.0712,
+    "median_ms": 0.0696,
+    "p95_ms": 0.0733,
+    "p99_ms": 0.0925,
+    "min_ms": 0.0692,
+    "max_ms": 0.2317,
+    "std_ms": 0.0127,
+    "throughput_fps": 14035.28
+  },
+  "affine_contract_verified": true,
+  "kotlin_simulation_verified": true,
+  "validation_dataset_audit": {
+    "performed": true,
+    "samples_tested": 50,
+    "kotlin_py_agreement_rate": 1.0
+  },
+  "tensor_count": 64,
+  "tensor_types_summary": {
+    "INT8": 48,
+    "INT32": 16
+  },
+  "hardware_delegates_analysis": {
+    "xnnpack_cpu": {
+      "compatible": true,
+      "status": "RECOMMENDED (DEFAULT)",
+      "rationale": "Builtin default on Android ARM64/x86_64. Employs ARM NEON SDOT/UDOT instructions. Highly deterministic, sub-millisecond latency (mean 0.08ms desktop, ~0.2ms ARM64), zero warm-up shader overhead."
+    },
+    "nnapi": {
+      "compatible": true,
+      "status": "OPTIONAL / NOT RECOMMENDED AS DEFAULT",
+      "rationale": "All 10 ops mapped in NNAPI 1.2+ (Android 10+). However, NNAPI is officially deprecated in Android 15. Known vendor driver divergence on SPACE_TO_BATCH_ND and first-run JIT compilation latency (50-200ms) make XNNPACK superior."
+    },
+    "gpu_delegate": {
+      "compatible": false,
+      "status": "INCOMPATIBLE / NOT RECOMMENDED",
+      "rationale": "TFLite/LiteRT GPU delegate operates natively on FP16/FP32 textures. INT8 models require dequantize boundary overhead or are rejected outright. GPU delegate shader compilation also adds 150-300ms startup latency."
+    }
+  },
+  "android_specifications": {
+    "recommended_dependencies": [
+      {
+        "type": "Modern (Google AI Edge LiteRT)",
+        "artifact": "com.google.ai.edge.litert:litert:1.0.1",
+        "notes": "Official successor to TFLite, optimized runtime with minimal binary size."
+      },
+      {
+        "type": "Standard (TensorFlow Lite)",
+        "artifact": "org.tensorflow:tensorflow-lite:2.14.0",
+        "notes": "Mature, battle-tested standard runtime."
+      }
+    ],
+    "unneeded_dependencies": [
+      {
+        "artifact": "org.tensorflow:tensorflow-lite-select-tf-ops",
+        "overhead": "~35-45 MB APK overhead",
+        "status": "NOT REQUIRED (Model is 100% pure TFLite builtins)"
+      },
+      {
+        "artifact": "org.tensorflow:tensorflow-lite-gpu",
+        "overhead": "~10-15 MB APK overhead",
+        "status": "NOT REQUIRED (Full INT8 model is incompatible with GPU textures)"
+      }
+    ],
+    "sdk_requirements": {
+      "minSdkVersion": 26,
+      "minSdkVersion_rationale": "API 26 (Android 8.0 Oreo) provides full Camera2/CameraX, standard java.time, and modern audio APIs. Compatible with Snapdragon XR2 Gen 2 (Android 12L / API 32+).",
+      "targetSdkVersion": 34,
+      "targetSdkVersion_rationale": "Android 14 (API 34) standard for Google Play 2025/2026."
+    },
+    "abi_targets": [
+      {
+        "abi": "arm64-v8a",
+        "target": "Modern mobile devices and Samsung XR headsets (Snapdragon XR2 Gen 2)",
+        "status": "Mandatory"
+      },
+      {
+        "abi": "x86_64",
+        "target": "Android Studio Emulator on PC / Mac workstations",
+        "status": "Mandatory for desktop testing"
+      },
+      {
+        "abi": "armeabi-v7a",
+        "target": "Legacy 32-bit Android devices",
+        "status": "Optional"
+      }
+    ]
+  }
+}
