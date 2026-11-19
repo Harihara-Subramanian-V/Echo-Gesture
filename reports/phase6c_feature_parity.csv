@@ -1,0 +1,11 @@
+video_id,ground_truth,frames_count,max_diff_134,mean_diff_134,match_rate_134_pct,max_diff_resampled_64,match_rate_resampled_64_pct,max_diff_math_263,max_diff_final_263,match_rate_final_263_pct,max_diff_int8_tensor,exact_match_int8_pct
+msasl_test_1868_61q-PJr_UvM,all,70,1.0,0.003557,83.33,1.0,85.67,0.000335,2.042223,71.67,35,95.38
+msasl_test_1735_nHnqAu_1K-c,bed,50,0.062488,0.00013,98.16,0.062488,98.18,0.000275,0.477079,98.5,9,99.11
+msasl_test_1883_Zns-jGjPK5Q,before,33,0.0,0.0,100.0,0.0,100.0,0.000462,0.000462,100.0,1,99.99
+msasl_test_1780_otTiJBUrJmI,black,107,0.048828,4.1e-05,98.3,0.048504,97.88,0.000153,0.575291,98.53,10,99.39
+msasl_test_1781_otTiJBUrJmI,blue,88,1.0,0.005276,98.35,1.0,97.2,0.000484,1.735944,97.97,30,98.51
+msasl_test_1990_g5KHrQrZRmY,book,29,0.0,0.0,100.0,0.0,100.0,0.001024,0.001024,99.99,1,99.96
+msasl_test_1915_uAd_WUgKZzI,bowling,43,0.0,0.0,100.0,0.0,100.0,0.00223,0.00223,99.69,1,99.98
+msasl_test_1811_-hzoIOWYJac,can,86,0.0,0.0,100.0,0.0,100.0,0.000382,0.000382,100.0,1,99.97
+msasl_test_1987_RMUydgQr9TE,candy,63,1.0,0.007371,93.25,1.0,92.5,0.000187,2.27692,85.37,39,96.41
+msasl_test_1965_oXzTnqvjnN8,chair,45,0.0,0.0,100.0,0.0,100.0,0.000599,0.000599,100.0,1,99.94

@@ -1,0 +1,688 @@
+{
+  "model_path": "models/checkpoints/best_baseline_model.keras",
+  "parameter_count": 87336,
+  "model_size_mb": 1.0748825073242188,
+  "num_classes": 40,
+  "splits": {
+    "validation": {
+      "sample_count": 262,
+      "active_classes": 39,
+      "metrics": {
+        "top1_accuracy": 0.5458015267175572,
+        "top5_accuracy": 0.7786259541984732,
+        "macro_precision": 0.5376807841281526,
+        "macro_recall": 0.5091242784992784,
+        "macro_f1": 0.47937654326237916,
+        "weighted_precision": 0.6124436448110614,
+        "weighted_recall": 0.5458015267175572,
+        "weighted_f1": 0.5320437665963863,
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "all",
+            "support": 7,
+            "precision": 0.3157894736842105,
+            "recall": 0.8571428571428571,
+            "f1_score": 0.46153846153846156
+          },
+          {
+            "class_id": 1,
+            "class_name": "bed",
+            "support": 3,
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 2,
+            "class_name": "before",
+            "support": 7,
+            "precision": 0.3333333333333333,
+            "recall": 0.14285714285714285,
+            "f1_score": 0.2
+          },
+          {
+            "class_id": 3,
+            "class_name": "black",
+            "support": 9,
+            "precision": 0.625,
+            "recall": 0.5555555555555556,
+            "f1_score": 0.5882352941176471
+          },
+          {
+            "class_id": 4,
+            "class_name": "blue",
+            "support": 5,
+            "precision": 0.08333333333333333,
+            "recall": 0.2,
+            "f1_score": 0.11764705882352941
+          },
+          {
+            "class_id": 5,
+            "class_name": "book",
+            "support": 8,
+            "precision": 0.75,
+            "recall": 0.375,
+            "f1_score": 0.5
+          },
+          {
+            "class_id": 6,
+            "class_name": "bowling",
+            "support": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 7,
+            "class_name": "can",
+            "support": 9,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.8
+          },
+          {
+            "class_id": 8,
+            "class_name": "candy",
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 9,
+            "class_name": "chair",
+            "support": 11,
+            "precision": 0.9090909090909091,
+            "recall": 0.9090909090909091,
+            "f1_score": 0.9090909090909091
+          },
+          {
+            "class_id": 10,
+            "class_name": "clothes",
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0
+          },
+          {
+            "class_id": 11,
+            "class_name": "computer",
+            "support": 6,
+            "precision": 0.5,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.5714285714285714
+          },
+          {
+            "class_id": 12,
+            "class_name": "cool",
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1_score": 0.3333333333333333
+          },
+          {
+            "class_id": 13,
+            "class_name": "cousin",
+            "support": 7,
+            "precision": 0.4,
+            "recall": 0.8571428571428571,
+            "f1_score": 0.5454545454545454
+          },
+          {
+            "class_id": 14,
+            "class_name": "deaf",
+            "support": 8,
+            "precision": 0.36363636363636365,
+            "recall": 0.5,
+            "f1_score": 0.42105263157894735
+          },
+          {
+            "class_id": 15,
+            "class_name": "dog",
+            "support": 5,
+            "precision": 0.3333333333333333,
+            "recall": 0.2,
+            "f1_score": 0.25
+          },
+          {
+            "class_id": 16,
+            "class_name": "drink",
+            "support": 3,
+            "precision": 0.25,
+            "recall": 0.3333333333333333,
+            "f1_score": 0.2857142857142857
+          },
+          {
+            "class_id": 17,
+            "class_name": "family",
+            "support": 9,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0
+          },
+          {
+            "class_id": 18,
+            "class_name": "fine",
+            "support": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 19,
+            "class_name": "finish",
+            "support": 9,
+            "precision": 0.6,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.631578947368421
+          },
+          {
+            "class_id": 20,
+            "class_name": "fish",
+            "support": 7,
+            "precision": 0.4666666666666667,
+            "recall": 1.0,
+            "f1_score": 0.6363636363636364
+          },
+          {
+            "class_id": 21,
+            "class_name": "go",
+            "support": 7,
+            "precision": 0.7142857142857143,
+            "recall": 0.7142857142857143,
+            "f1_score": 0.7142857142857143
+          },
+          {
+            "class_id": 22,
+            "class_name": "graduate",
+            "support": 2,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1_score": 0.3333333333333333
+          },
+          {
+            "class_id": 23,
+            "class_name": "help",
+            "support": 8,
+            "precision": 1.0,
+            "recall": 0.375,
+            "f1_score": 0.5454545454545454
+          },
+          {
+            "class_id": 24,
+            "class_name": "hot",
+            "support": 10,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1_score": 0.3333333333333333
+          },
+          {
+            "class_id": 25,
+            "class_name": "like",
+            "support": 10,
+            "precision": 0.5333333333333333,
+            "recall": 0.8,
+            "f1_score": 0.64
+          },
+          {
+            "class_id": 26,
+            "class_name": "many",
+            "support": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 27,
+            "class_name": "mother",
+            "support": 11,
+            "precision": 1.0,
+            "recall": 0.5454545454545454,
+            "f1_score": 0.7058823529411765
+          },
+          {
+            "class_id": 28,
+            "class_name": "no",
+            "support": 11,
+            "precision": 1.0,
+            "recall": 0.6363636363636364,
+            "f1_score": 0.7777777777777778
+          },
+          {
+            "class_id": 29,
+            "class_name": "now",
+            "support": 7,
+            "precision": 0.5454545454545454,
+            "recall": 0.8571428571428571,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 30,
+            "class_name": "orange",
+            "support": 8,
+            "precision": 0.375,
+            "recall": 0.375,
+            "f1_score": 0.375
+          },
+          {
+            "class_id": 31,
+            "class_name": "table",
+            "support": 9,
+            "precision": 0.6923076923076923,
+            "recall": 1.0,
+            "f1_score": 0.8181818181818182
+          },
+          {
+            "class_id": 32,
+            "class_name": "thanksgiving",
+            "support": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 33,
+            "class_name": "thin",
+            "support": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 34,
+            "class_name": "walk",
+            "support": 3,
+            "precision": 0.25,
+            "recall": 0.3333333333333333,
+            "f1_score": 0.2857142857142857
+          },
+          {
+            "class_id": 35,
+            "class_name": "what",
+            "support": 6,
+            "precision": 0.4,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.5
+          },
+          {
+            "class_id": 36,
+            "class_name": "who",
+            "support": 7,
+            "precision": 0.75,
+            "recall": 0.42857142857142855,
+            "f1_score": 0.5454545454545454
+          },
+          {
+            "class_id": 37,
+            "class_name": "woman",
+            "support": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 38,
+            "class_name": "year",
+            "support": 2,
+            "precision": 0.4,
+            "recall": 1.0,
+            "f1_score": 0.5714285714285714
+          },
+          {
+            "class_id": 39,
+            "class_name": "yes",
+            "support": 11,
+            "precision": 1.0,
+            "recall": 0.6363636363636364,
+            "f1_score": 0.7777777777777778
+          }
+        ]
+      }
+    },
+    "test": {
+      "sample_count": 197,
+      "active_classes": 40,
+      "metrics": {
+        "top1_accuracy": 0.5279187817258884,
+        "top5_accuracy": 0.8223350253807107,
+        "macro_precision": 0.47951298701298695,
+        "macro_recall": 0.5343948412698414,
+        "macro_f1": 0.46999753498165475,
+        "weighted_precision": 0.5119509086514162,
+        "weighted_recall": 0.5279187817258884,
+        "weighted_f1": 0.4888070200563867,
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "all",
+            "support": 7,
+            "precision": 0.6,
+            "recall": 0.42857142857142855,
+            "f1_score": 0.5
+          },
+          {
+            "class_id": 1,
+            "class_name": "bed",
+            "support": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 2,
+            "class_name": "before",
+            "support": 4,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1_score": 0.5714285714285714
+          },
+          {
+            "class_id": 3,
+            "class_name": "black",
+            "support": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1_score": 0.4
+          },
+          {
+            "class_id": 4,
+            "class_name": "blue",
+            "support": 3,
+            "precision": 0.16666666666666666,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.26666666666666666
+          },
+          {
+            "class_id": 5,
+            "class_name": "book",
+            "support": 9,
+            "precision": 0.8571428571428571,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.75
+          },
+          {
+            "class_id": 6,
+            "class_name": "bowling",
+            "support": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 7,
+            "class_name": "can",
+            "support": 5,
+            "precision": 0.5714285714285714,
+            "recall": 0.8,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 8,
+            "class_name": "candy",
+            "support": 2,
+            "precision": 0.3333333333333333,
+            "recall": 0.5,
+            "f1_score": 0.4
+          },
+          {
+            "class_id": 9,
+            "class_name": "chair",
+            "support": 9,
+            "precision": 0.4,
+            "recall": 0.8888888888888888,
+            "f1_score": 0.5517241379310345
+          },
+          {
+            "class_id": 10,
+            "class_name": "clothes",
+            "support": 1,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 11,
+            "class_name": "computer",
+            "support": 2,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1_score": 0.8
+          },
+          {
+            "class_id": 12,
+            "class_name": "cool",
+            "support": 6,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 13,
+            "class_name": "cousin",
+            "support": 5,
+            "precision": 0.42857142857142855,
+            "recall": 0.6,
+            "f1_score": 0.5
+          },
+          {
+            "class_id": 14,
+            "class_name": "deaf",
+            "support": 8,
+            "precision": 0.45454545454545453,
+            "recall": 0.625,
+            "f1_score": 0.5263157894736842
+          },
+          {
+            "class_id": 15,
+            "class_name": "dog",
+            "support": 5,
+            "precision": 0.5,
+            "recall": 0.6,
+            "f1_score": 0.5454545454545454
+          },
+          {
+            "class_id": 16,
+            "class_name": "drink",
+            "support": 1,
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1_score": 0.5
+          },
+          {
+            "class_id": 17,
+            "class_name": "family",
+            "support": 5,
+            "precision": 0.45454545454545453,
+            "recall": 1.0,
+            "f1_score": 0.625
+          },
+          {
+            "class_id": 18,
+            "class_name": "fine",
+            "support": 6,
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.7272727272727273
+          },
+          {
+            "class_id": 19,
+            "class_name": "finish",
+            "support": 8,
+            "precision": 0.5,
+            "recall": 0.375,
+            "f1_score": 0.42857142857142855
+          },
+          {
+            "class_id": 20,
+            "class_name": "fish",
+            "support": 4,
+            "precision": 0.3333333333333333,
+            "recall": 0.25,
+            "f1_score": 0.2857142857142857
+          },
+          {
+            "class_id": 21,
+            "class_name": "go",
+            "support": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 22,
+            "class_name": "graduate",
+            "support": 2,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 23,
+            "class_name": "help",
+            "support": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 24,
+            "class_name": "hot",
+            "support": 5,
+            "precision": 0.4,
+            "recall": 0.4,
+            "f1_score": 0.4
+          },
+          {
+            "class_id": 25,
+            "class_name": "like",
+            "support": 6,
+            "precision": 0.5,
+            "recall": 0.8333333333333334,
+            "f1_score": 0.625
+          },
+          {
+            "class_id": 26,
+            "class_name": "many",
+            "support": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 27,
+            "class_name": "mother",
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1_score": 0.3333333333333333
+          },
+          {
+            "class_id": 28,
+            "class_name": "no",
+            "support": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1_score": 0.5714285714285714
+          },
+          {
+            "class_id": 29,
+            "class_name": "now",
+            "support": 10,
+            "precision": 0.8333333333333334,
+            "recall": 1.0,
+            "f1_score": 0.9090909090909091
+          },
+          {
+            "class_id": 30,
+            "class_name": "orange",
+            "support": 6,
+            "precision": 0.3333333333333333,
+            "recall": 0.16666666666666666,
+            "f1_score": 0.2222222222222222
+          },
+          {
+            "class_id": 31,
+            "class_name": "table",
+            "support": 5,
+            "precision": 0.8333333333333334,
+            "recall": 1.0,
+            "f1_score": 0.9090909090909091
+          },
+          {
+            "class_id": 32,
+            "class_name": "thanksgiving",
+            "support": 3,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1_score": 0.8571428571428571
+          },
+          {
+            "class_id": 33,
+            "class_name": "thin",
+            "support": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 34,
+            "class_name": "walk",
+            "support": 8,
+            "precision": 0.7142857142857143,
+            "recall": 0.625,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 35,
+            "class_name": "what",
+            "support": 3,
+            "precision": 0.3333333333333333,
+            "recall": 0.6666666666666666,
+            "f1_score": 0.4444444444444444
+          },
+          {
+            "class_id": 36,
+            "class_name": "who",
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1_score": 0.6666666666666666
+          },
+          {
+            "class_id": 37,
+            "class_name": "woman",
+            "support": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          {
+            "class_id": 38,
+            "class_name": "year",
+            "support": 4,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1_score": 0.75
+          },
+          {
+            "class_id": 39,
+            "class_name": "yes",
+            "support": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1_score": 0.4
+          }
+        ]
+      }
+    }
+  },
+  "inference_latency": {
+    "mean_ms": 17.570631999333273,
+    "std_ms": 2.7039881360898637,
+    "median_ms": 16.958550000708783,
+    "p95_ms": 23.64775000132795,
+    "min_ms": 14.005599994561635,
+    "max_ms": 27.56550000049174
+  }
+}

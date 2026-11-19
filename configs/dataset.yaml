@@ -1,0 +1,270 @@
+# EchoGesture Dataset Configuration
+# ===================================
+# Verified Phase 2 Dataset Specification
+
+dataset:
+  name: "echogesture_v1"
+  version: "0.2.0"
+  status: "verified_audit"
+
+  # Primary dataset source
+  primary_source: "WLASL"
+  source_metadata_url: "https://raw.githubusercontent.com/dxli94/WLASL/master/start_kit/WLASL_v0.3.json"
+  license: "Creative Commons CC BY-NC 4.0 (Research & Academic Use)"
+
+  # Target vocabulary definition
+  target_vocab_size: 40
+  total_selected_instances: 911
+  total_unique_signers: 79
+
+  # Verified 40-class lexicon (sorted by sample density)
+  vocabulary:
+    - index: 0
+      gloss: "book"
+      instances: 40
+      signers: 15
+      morphology: "two-handed"
+    - index: 1
+      gloss: "drink"
+      instances: 35
+      signers: 18
+      morphology: "one-handed"
+    - index: 2
+      gloss: "computer"
+      instances: 30
+      signers: 15
+      morphology: "two-handed"
+    - index: 3
+      gloss: "before"
+      instances: 26
+      signers: 16
+      morphology: "two-handed"
+    - index: 4
+      gloss: "chair"
+      instances: 26
+      signers: 16
+      morphology: "two-handed"
+    - index: 5
+      gloss: "go"
+      instances: 26
+      signers: 17
+      morphology: "two-handed"
+    - index: 6
+      gloss: "clothes"
+      instances: 25
+      signers: 12
+      morphology: "two-handed"
+    - index: 7
+      gloss: "who"
+      instances: 25
+      signers: 21
+      morphology: "one-handed"
+    - index: 8
+      gloss: "candy"
+      instances: 24
+      signers: 16
+      morphology: "one-handed"
+    - index: 9
+      gloss: "cousin"
+      instances: 23
+      signers: 13
+      morphology: "one-handed"
+    - index: 10
+      gloss: "deaf"
+      instances: 23
+      signers: 18
+      morphology: "one-handed"
+    - index: 11
+      gloss: "fine"
+      instances: 22
+      signers: 16
+      morphology: "one-handed"
+    - index: 12
+      gloss: "help"
+      instances: 22
+      signers: 15
+      morphology: "two-handed"
+    - index: 13
+      gloss: "no"
+      instances: 22
+      signers: 18
+      morphology: "one-handed"
+    - index: 14
+      gloss: "thin"
+      instances: 22
+      signers: 17
+      morphology: "two-handed"
+    - index: 15
+      gloss: "walk"
+      instances: 22
+      signers: 18
+      morphology: "two-handed"
+    - index: 16
+      gloss: "year"
+      instances: 22
+      signers: 16
+      morphology: "two-handed"
+    - index: 17
+      gloss: "yes"
+      instances: 22
+      signers: 17
+      morphology: "one-handed"
+    - index: 18
+      gloss: "all"
+      instances: 21
+      signers: 15
+      morphology: "two-handed"
+    - index: 19
+      gloss: "black"
+      instances: 21
+      signers: 17
+      morphology: "one-handed"
+    - index: 20
+      gloss: "cool"
+      instances: 21
+      signers: 11
+      morphology: "two-handed"
+    - index: 21
+      gloss: "finish"
+      instances: 21
+      signers: 16
+      morphology: "two-handed"
+    - index: 22
+      gloss: "hot"
+      instances: 21
+      signers: 17
+      morphology: "one-handed"
+    - index: 23
+      gloss: "like"
+      instances: 21
+      signers: 14
+      morphology: "one-handed"
+    - index: 24
+      gloss: "many"
+      instances: 21
+      signers: 14
+      morphology: "two-handed"
+    - index: 25
+      gloss: "mother"
+      instances: 21
+      signers: 15
+      morphology: "one-handed"
+    - index: 26
+      gloss: "now"
+      instances: 21
+      signers: 15
+      morphology: "two-handed"
+    - index: 27
+      gloss: "orange"
+      instances: 21
+      signers: 17
+      morphology: "one-handed"
+    - index: 28
+      gloss: "table"
+      instances: 21
+      signers: 14
+      morphology: "two-handed"
+    - index: 29
+      gloss: "thanksgiving"
+      instances: 21
+      signers: 14
+      morphology: "one-handed"
+    - index: 30
+      gloss: "what"
+      instances: 21
+      signers: 18
+      morphology: "two-handed"
+    - index: 31
+      gloss: "woman"
+      instances: 21
+      signers: 15
+      morphology: "one-handed"
+    - index: 32
+      gloss: "bed"
+      instances: 20
+      signers: 16
+      morphology: "two-handed"
+    - index: 33
+      gloss: "blue"
+      instances: 20
+      signers: 17
+      morphology: "one-handed"
+    - index: 34
+      gloss: "bowling"
+      instances: 20
+      signers: 13
+      morphology: "one-handed"
+    - index: 35
+      gloss: "can"
+      instances: 20
+      signers: 13
+      morphology: "two-handed"
+    - index: 36
+      gloss: "dog"
+      instances: 20
+      signers: 17
+      morphology: "one-handed"
+    - index: 37
+      gloss: "family"
+      instances: 20
+      signers: 16
+      morphology: "two-handed"
+    - index: 38
+      gloss: "fish"
+      instances: 20
+      signers: 17
+      morphology: "one-handed"
+    - index: 39
+      gloss: "graduate"
+      instances: 20
+      signers: 14
+      morphology: "two-handed"
+
+  # Signer-Independent Split Strategy (Prevents data leakage)
+  splits:
+    strategy: "signer_independent"
+    leakage_check: "zero_signer_overlap_verified"
+    train_signers: 53
+    train_instances: 635
+    train_ratio: 0.697
+    val_signers: 7
+    val_instances: 146
+    val_ratio: 0.160
+    test_signers: 19
+    test_instances: 130
+    test_ratio: 0.143
+    gloss_coverage_train: "40/40"
+    gloss_coverage_val: "40/40"
+    gloss_coverage_test: "40/40"
+
+  # Video processing constraints
+  video:
+    min_duration_sec: 0.5
+    max_duration_sec: 6.0
+    standard_frames: 30
+    min_resolution: 224
+    accepted_formats:
+      - ".mp4"
+      - ".mov"
+      - ".avi"
+
+  # Storage paths (relative to project root)
+  paths:
+    raw_videos: "data/raw/"
+    processed: "data/processed/"
+    landmarks: "data/landmarks/"
+    splits: "data/splits/"
+    manifest: "data/splits/manifest.csv"
+
+  # Alternative sources audited
+  sources_audited:
+    wlasl:
+      name: "WLASL (Word-Level American Sign Language)"
+      url: "https://dxli94.github.io/WLASL/"
+      status: "APPROVED_PRIMARY"
+      reason: "Isolated sign language taxonomy with verified signer metadata."
+    how2sign:
+      name: "How2Sign"
+      url: "https://how2sign.github.io/"
+      status: "REJECTED"
+      reason: "Continuous sentence sign language requiring CTC/Seq2Seq. Storage (>30 GB) exceeds workstation headroom."

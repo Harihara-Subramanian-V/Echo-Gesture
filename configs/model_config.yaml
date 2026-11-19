@@ -1,0 +1,81 @@
+# EchoGesture Phase 4 Baseline Model Configuration
+# Architecture, training hyperparameters, and edge constraints
+
+experiment:
+  name: "echogesture_baseline_v3"
+  random_seed: 42
+  track: "Track 2: Samsung XR Hackathon 2026"
+
+dataset:
+  manifest_path: "data/processed/landmarks_v3/feature_manifest.csv"
+  preprocessed_dir: "data/processed/sequences_v3"
+  sequence_length: 64
+  feature_dim: 134
+  num_classes: 40
+  total_clips: 1452
+  split_counts:
+    train: 993
+    val: 262
+    test: 197
+  validation_class_count: 39  # 'thanksgiving' has 0 instances in MS-ASL val split
+
+architecture:
+  selected: "compact_tcn"     # Primary selected edge baseline
+  alternative: "compact_gru"  # Benchmarked recurrent comparison
+  
+  compact_tcn:
+    type: "1D-CNN with Dilated Residual Connections"
+    conv1_filters: 64
+    conv1_kernel: 3
+    res_block_filters: 64
+    res_block_kernel: 3
+    res_block_dilation: 2
+    conv3_filters: 128
+    conv3_kernel: 3
+    conv3_dilation: 4
+    pooling: "GlobalAveragePooling1D"
+    dense_units: 64
+    dropout: 0.25
+    dense_dropout: 0.35
+    parameter_budget_max: 150000
+    actual_parameters: 87336
+
+  compact_gru:
+    type: "Unrolled Recurrent Network"
+    hidden_units: 64
+    unroll: true
+    dense_units: 64
+    dropout: 0.25
+    dense_dropout: 0.35
+    actual_parameters: 45160
+
+training:
+  batch_size: 32
+  epochs: 80
+  learning_rate: 0.001
+  min_learning_rate: 0.00001
+  optimizer: "adam"
+  loss: "sparse_categorical_crossentropy"
+  clipnorm: 1.0
+  early_stopping:
+    monitor: "val_loss"
+    patience: 15
+    restore_best_weights: true
+  lr_reduction:
+    monitor: "val_loss"
+    factor: 0.5
+    patience: 6
+    min_lr: 0.00001
+
+edge_deployment_constraints:
+  max_parameters: 150000
+  max_model_size_mb: 20.0
+  target_latency_cpu_ms: 30.0
+  tflite_builtin_compatibility: true
+  int8_quantization_ready: true
+
+checkpoints:
+  directory: "models/checkpoints"
+  best_model_path: "models/checkpoints/best_baseline_model.keras"
+  history_csv_path: "reports/baseline_training_history.csv"
+  history_plot_path: "reports/figures/training_history.png"

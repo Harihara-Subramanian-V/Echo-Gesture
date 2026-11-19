@@ -1,0 +1,115 @@
+# EchoGesture Training Configuration
+# ====================================
+
+training:
+  # Experiment tracking
+  experiment_name: "echogesture_v1"
+  random_seed: 42
+  
+  # Model architecture
+  model:
+    # Architecture selection
+    architecture: "gru"           # gru | temporal_cnn | gru_cnn_hybrid
+    
+    # GRU Configuration
+    gru:
+      hidden_units: [128, 64]     # Stacked GRU layers
+      dropout: 0.3
+      recurrent_dropout: 0.2
+      bidirectional: false        # Keep unidirectional for edge efficiency
+      
+    # Temporal CNN Configuration  
+    temporal_cnn:
+      filters: [64, 128, 64]
+      kernel_sizes: [3, 3, 3]
+      pool_sizes: [2, 2, 1]
+      dropout: 0.3
+      use_batch_norm: true
+      
+    # Classifier head
+    classifier:
+      dense_units: [128]
+      dropout: 0.4
+      activation: "softmax"
+      
+  # Input specification
+  input:
+    sequence_length: 30
+    feature_dim: null              # Computed from feature engineering
+    
+  # Training hyperparameters
+  hyperparameters:
+    batch_size: 32
+    epochs: 100
+    learning_rate: 0.001
+    optimizer: "adam"
+    weight_decay: 0.0001
+    lr_scheduler: "reduce_on_plateau"
+    lr_patience: 10
+    lr_factor: 0.5
+    min_lr: 0.00001
+    
+  # Early stopping
+  early_stopping:
+    enabled: true
+    monitor: "val_accuracy"
+    patience: 20
+    min_delta: 0.001
+    restore_best_weights: true
+    
+  # Checkpointing
+  checkpointing:
+    save_best_only: true
+    monitor: "val_accuracy"
+    save_path: "models/checkpoints/"
+    
+  # Data augmentation (landmark-level)
+  augmentation:
+    enabled: true
+    coordinate_jitter:
+      enabled: true
+      std: 0.01
+    temporal_crop:
+      enabled: true
+      min_ratio: 0.8
+    landmark_dropout:
+      enabled: true
+      rate: 0.05
+    scale_variation:
+      enabled: true
+      range: [0.9, 1.1]
+    time_warp:
+      enabled: false              # Enable after baseline
+      
+  # Logging
+  logging:
+    tensorboard: false            # Enable if TensorBoard available
+    log_dir: "outputs/logs/"
+    save_history: true
+    history_path: "outputs/training_history.json"
+
+# Quantization Configuration
+quantization:
+  # TFLite conversion
+  tflite:
+    optimization: "INT8"          # FLOAT16 | INT8 | DYNAMIC_RANGE
+    representative_dataset_size: 200
+    target_size_mb: 20
+    
+  # Benchmarking
+  benchmark:
+    num_runs: 100
+    warmup_runs: 10
+    target_latency_ms: 50
+
+# Evaluation
+evaluation:
+  metrics:
+    - "accuracy"
+    - "top5_accuracy"
+    - "precision_per_class"
+    - "recall_per_class"
+    - "f1_per_class"
+    - "confusion_matrix"
+  report_path: "reports/model_evaluation.md"
+  results_path: "outputs/evaluation_results.json"

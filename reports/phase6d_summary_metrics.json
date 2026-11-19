@@ -1,0 +1,47 @@
+{
+  "total_test_clips": 197,
+  "failed_clips_count": 0,
+  "failed_clips": [],
+  "classes_count": 40,
+  "signers_count": 10,
+  "short_clips_count": 98,
+  "long_clips_count": 99,
+  "metrics": {
+    "offline": {
+      "top1_accuracy": 0.6548,
+      "top5_accuracy": 0.8477,
+      "macro_f1": 0.6386,
+      "weighted_f1": 0.6557,
+      "short_clip_acc": 0.6429,
+      "long_clip_acc": 0.6667
+    },
+    "live_raw": {
+      "top1_accuracy": 0.5888,
+      "top5_accuracy": 0.7817,
+      "macro_f1": 0.5552,
+      "weighted_f1": 0.5648,
+      "short_clip_acc": 0.5714,
+      "long_clip_acc": 0.6061
+    },
+    "live_stabilized": {
+      "top1_accuracy": 0.6193,
+      "macro_f1": 0.6023,
+      "weighted_f1": 0.6207,
+      "short_clip_acc": 0.6429,
+      "long_clip_acc": 0.596
+    },
+    "coverage": {
+      "prediction_coverage": 1.0,
+      "missing_prediction_rate": 0.0
+    },
+    "parity_and_stability": {
+      "offline_vs_raw_agreement": 0.797,
+      "offline_vs_stab_agreement": 0.868,
+      "median_time_to_first_prediction_frames": 17.0,
+      "p95_time_to_first_prediction_frames": 34.4,
+      "median_time_to_first_prediction_sec": 0.57,
+      "p95_time_to_first_prediction_sec": 1.15,
+      "mean_prediction_changes": 0.66
+    }
+  }
+}

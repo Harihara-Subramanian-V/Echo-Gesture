@@ -1,0 +1,20 @@
+{
+  "exp_id": "EXP_D",
+  "exp_name": "Compact TCN + Velocity + Dynamic Augmentation (263-D)",
+  "use_velocity": true,
+  "use_augmentation": true,
+  "feature_dim": 263,
+  "param_count": 112104,
+  "model_size_mb": 1.3583354949951172,
+  "latency_ms": 16.99312199925771,
+  "best_epoch": 44,
+  "total_epochs": 59,
+  "train_time_sec": 57.816075399998226,
+  "train_accuracy": 0.8650553822517395,
+  "train_loss": 0.45673656463623047,
+  "val_top1": 0.6526717557251909,
+  "val_top5": 0.8664122137404581,
+  "val_macro_f1": 0.583329114107651,
+  "val_weighted_f1": 0.6522149885244946,
+  "checkpoint_path": "models\\checkpoints\\best_model_exp_d.keras"
+}

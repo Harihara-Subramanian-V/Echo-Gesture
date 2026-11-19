@@ -1,0 +1,105 @@
+{
+  "keras_float32": {
+    "model_type": "keras_float32",
+    "iterations": 1000,
+    "model_only_ms": {
+      "mean": 18.34007280015794,
+      "std": 4.077825136861331,
+      "median": 17.75315000122646,
+      "p90": 23.49120000289986,
+      "p95": 25.343240000802325,
+      "p99": 29.820893997530213,
+      "min": 9.100600000238046,
+      "max": 52.14640000485815,
+      "throughput_fps": 54.52541060749706
+    },
+    "preprocessing_ms": {
+      "mean": 0.0,
+      "median": 0.0
+    },
+    "postprocessing_ms": {
+      "mean": 0.0,
+      "median": 0.0
+    },
+    "end_to_end_ms": {
+      "mean": 18.34007280015794,
+      "median": 17.75315000122646,
+      "p95": 25.343240000802325,
+      "throughput_fps": 54.52541060749706
+    },
+    "file_size_bytes": 1424318,
+    "file_size_kb": 1390.935546875,
+    "file_size_mb": 1.3583354949951172
+  },
+  "tflite_float32": {
+    "model_type": "tflite_float32",
+    "iterations": 1000,
+    "model_only_ms": {
+      "mean": 0.20996349984488916,
+      "std": 0.04158444464883291,
+      "median": 0.2003499976126477,
+      "p90": 0.23620999490958638,
+      "p95": 0.25031499935721513,
+      "p99": 0.31750200199894607,
+      "min": 0.16969999705906957,
+      "max": 1.1951999986195005,
+      "throughput_fps": 4762.732573703293
+    },
+    "preprocessing_ms": {
+      "mean": 0.007427600066876039,
+      "median": 0.006900001608300954
+    },
+    "postprocessing_ms": {
+      "mean": 0.0025399999285582453,
+      "median": 0.0024999972083605826
+    },
+    "end_to_end_ms": {
+      "mean": 0.21993109984032344,
+      "median": 0.21070000366307795,
+      "p95": 0.2601999876787885,
+      "throughput_fps": 4546.878548445536
+    },
+    "file_size_bytes": 460040,
+    "file_size_kb": 449.2578125,
+    "file_size_mb": 0.43872833251953125
+  },
+  "tflite_int8": {
+    "model_type": "tflite_int8",
+    "iterations": 1000,
+    "model_only_ms": {
+      "mean": 0.10917919995699776,
+      "std": 0.014766233245782424,
+      "median": 0.1033000007737428,
+      "p90": 0.12620000052265823,
+      "p95": 0.14592499755963215,
+      "p99": 0.16244599974015722,
+      "min": 0.10230000043520704,
+      "max": 0.23359999613603577,
+      "throughput_fps": 9159.253780883799
+    },
+    "preprocessing_ms": {
+      "mean": 0.051006400062760804,
+      "median": 0.04380000245873816
+    },
+    "postprocessing_ms": {
+      "mean": 0.006044599875167478,
+      "median": 0.005800000508315861
+    },
+    "end_to_end_ms": {
+      "mean": 0.16623019989492605,
+      "median": 0.15560000247205608,
+      "p95": 0.20364000010886227,
+      "throughput_fps": 6015.754060526301
+    },
+    "file_size_bytes": 135464,
+    "file_size_kb": 132.2890625,
+    "file_size_mb": 0.12918853759765625
+  },
+  "analysis": {
+    "framework_speedup_tflite_vs_keras": 87.348862129402,
+    "quantization_speedup_int8_vs_f32": 1.9231089798018959,
+    "total_speedup_int8_vs_keras": 167.98138113653073,
+    "model_size_compression_ratio": 10.514365440264573,
+    "quantization_overhead_pct_of_e2e": 30.684195829038224
+  }
+}

@@ -1,0 +1,43 @@
+video_id,ground_truth,signer_id,scenario,scenario_description,clip_length_frames,first_stable_frame,first_stable_time_sec,peak_class,peak_confidence,final_predicted_class,final_confidence,prediction_changes,is_correct,is_missing,error_reason
+msasl_test_1868_61q-PJr_UvM,all,msasl_26,baseline,Unaltered original video,70,17,0.567,chair,0.863,IDLE,0.0,1,False,False,NONE
+msasl_test_1868_61q-PJr_UvM,all,msasl_26,dimmed_0.4,60% brightness reduction (severe underexposure),70,21,0.701,chair,0.836,IDLE,0.0,2,False,False,NONE
+msasl_test_1868_61q-PJr_UvM,all,msasl_26,occlusion_lower_30pct,Lower 30% frame masked to zero,70,24,0.801,thanksgiving,0.73,IDLE,0.0,1,False,False,NONE
+msasl_test_1868_61q-PJr_UvM,all,msasl_26,tracking_drop_5frames,5-frame tracking blackout in mid-gesture,70,17,0.567,chair,0.816,all,0.391,1,True,False,NONE
+msasl_test_1868_61q-PJr_UvM,all,msasl_26,tracking_drop_15frames,15-frame tracking blackout in mid-gesture,70,17,0.567,chair,0.816,IDLE,0.0,2,False,False,NONE
+msasl_test_1868_61q-PJr_UvM,all,msasl_26,spatial_shift_10pct,8% horizontal and vertical translation,70,31,1.034,chair,0.715,IDLE,0.0,2,False,False,NONE
+msasl_test_1868_61q-PJr_UvM,all,msasl_26,scale_down_0.75x,25% distance scaling / zoom out,70,17,0.567,chair,0.906,thanksgiving,0.396,1,False,False,NONE
+msasl_test_1780_otTiJBUrJmI,black,msasl_10,baseline,Unaltered original video,107,37,1.235,black,0.965,black,0.957,0,True,False,NONE
+msasl_test_1780_otTiJBUrJmI,black,msasl_10,dimmed_0.4,60% brightness reduction (severe underexposure),107,48,1.602,black,0.969,black,0.959,0,True,False,NONE
+msasl_test_1780_otTiJBUrJmI,black,msasl_10,occlusion_lower_30pct,Lower 30% frame masked to zero,107,38,1.268,black,0.965,black,0.959,0,True,False,NONE
+msasl_test_1780_otTiJBUrJmI,black,msasl_10,tracking_drop_5frames,5-frame tracking blackout in mid-gesture,107,37,1.235,black,0.953,black,0.944,0,True,False,NONE
+msasl_test_1780_otTiJBUrJmI,black,msasl_10,tracking_drop_15frames,15-frame tracking blackout in mid-gesture,107,37,1.235,black,0.906,black,0.891,1,True,False,NONE
+msasl_test_1780_otTiJBUrJmI,black,msasl_10,spatial_shift_10pct,8% horizontal and vertical translation,107,42,1.401,black,0.785,black,0.738,0,True,False,NONE
+msasl_test_1780_otTiJBUrJmI,black,msasl_10,scale_down_0.75x,25% distance scaling / zoom out,107,106,3.537,blue,0.469,blue,0.449,0,False,False,NONE
+msasl_test_1781_otTiJBUrJmI,blue,msasl_10,baseline,Unaltered original video,88,19,0.634,black,0.965,black,0.948,0,False,False,NONE
+msasl_test_1781_otTiJBUrJmI,blue,msasl_10,dimmed_0.4,60% brightness reduction (severe underexposure),88,21,0.701,bed,0.883,bed,0.649,1,False,False,NONE
+msasl_test_1781_otTiJBUrJmI,blue,msasl_10,occlusion_lower_30pct,Lower 30% frame masked to zero,88,19,0.634,black,0.973,black,0.966,0,False,False,NONE
+msasl_test_1781_otTiJBUrJmI,blue,msasl_10,tracking_drop_5frames,5-frame tracking blackout in mid-gesture,88,18,0.601,black,0.957,black,0.934,0,False,False,NONE
+msasl_test_1781_otTiJBUrJmI,blue,msasl_10,tracking_drop_15frames,15-frame tracking blackout in mid-gesture,88,19,0.634,black,0.949,black,0.874,1,False,False,NONE
+msasl_test_1781_otTiJBUrJmI,blue,msasl_10,spatial_shift_10pct,8% horizontal and vertical translation,88,19,0.634,black,0.602,black,0.484,0,False,False,NONE
+msasl_test_1781_otTiJBUrJmI,blue,msasl_10,scale_down_0.75x,25% distance scaling / zoom out,88,26,0.868,drink,0.379,blue,0.355,2,True,False,NONE
+msasl_test_1811_-hzoIOWYJac,can,msasl_34,baseline,Unaltered original video,86,63,2.1,can,0.934,can,0.914,0,True,False,NONE
+msasl_test_1811_-hzoIOWYJac,can,msasl_34,dimmed_0.4,60% brightness reduction (severe underexposure),86,64,2.133,can,0.898,can,0.881,0,True,False,NONE
+msasl_test_1811_-hzoIOWYJac,can,msasl_34,occlusion_lower_30pct,Lower 30% frame masked to zero,86,-1,-1.0,can,0.445,IDLE,0.0,0,True,True,NO_HANDS_OR_LOW_CONFIDENCE
+msasl_test_1811_-hzoIOWYJac,can,msasl_34,tracking_drop_5frames,5-frame tracking blackout in mid-gesture,86,64,2.133,can,0.926,can,0.912,0,True,False,NONE
+msasl_test_1811_-hzoIOWYJac,can,msasl_34,tracking_drop_15frames,15-frame tracking blackout in mid-gesture,86,73,2.433,can,0.82,can,0.776,0,True,False,NONE
+msasl_test_1811_-hzoIOWYJac,can,msasl_34,spatial_shift_10pct,8% horizontal and vertical translation,86,62,2.067,can,0.91,can,0.895,0,True,False,NONE
+msasl_test_1811_-hzoIOWYJac,can,msasl_34,scale_down_0.75x,25% distance scaling / zoom out,86,56,1.867,can,0.926,can,0.912,1,True,False,NONE
+msasl_test_1976_3TU7xovzhMo,computer,msasl_26,baseline,Unaltered original video,96,35,1.168,fine,0.719,fine,0.536,2,False,False,NONE
+msasl_test_1976_3TU7xovzhMo,computer,msasl_26,dimmed_0.4,60% brightness reduction (severe underexposure),96,36,1.201,fine,0.797,fine,0.555,2,False,False,NONE
+msasl_test_1976_3TU7xovzhMo,computer,msasl_26,occlusion_lower_30pct,Lower 30% frame masked to zero,96,77,2.569,no,0.602,IDLE,0.0,1,False,False,NONE
+msasl_test_1976_3TU7xovzhMo,computer,msasl_26,tracking_drop_5frames,5-frame tracking blackout in mid-gesture,96,35,1.168,fine,0.91,fine,0.902,0,False,False,NONE
+msasl_test_1976_3TU7xovzhMo,computer,msasl_26,tracking_drop_15frames,15-frame tracking blackout in mid-gesture,96,35,1.168,fine,0.801,fine,0.785,1,False,False,NONE
+msasl_test_1976_3TU7xovzhMo,computer,msasl_26,spatial_shift_10pct,8% horizontal and vertical translation,96,34,1.134,fine,0.863,fine,0.819,0,False,False,NONE
+msasl_test_1976_3TU7xovzhMo,computer,msasl_26,scale_down_0.75x,25% distance scaling / zoom out,96,23,0.767,fine,0.512,fine,0.431,3,False,False,NONE
+msasl_test_1727_KTURNRi-wy0,deaf,msasl_26,baseline,Unaltered original video,74,16,0.534,deaf,0.809,deaf,0.538,0,True,False,NONE
+msasl_test_1727_KTURNRi-wy0,deaf,msasl_26,dimmed_0.4,60% brightness reduction (severe underexposure),74,17,0.567,deaf,0.641,deaf,0.448,0,True,False,NONE
+msasl_test_1727_KTURNRi-wy0,deaf,msasl_26,occlusion_lower_30pct,Lower 30% frame masked to zero,74,17,0.567,deaf,0.836,deaf,0.497,0,True,False,NONE
+msasl_test_1727_KTURNRi-wy0,deaf,msasl_26,tracking_drop_5frames,5-frame tracking blackout in mid-gesture,74,16,0.534,deaf,0.848,deaf,0.685,0,True,False,NONE
+msasl_test_1727_KTURNRi-wy0,deaf,msasl_26,tracking_drop_15frames,15-frame tracking blackout in mid-gesture,74,16,0.534,deaf,0.805,deaf,0.768,1,True,False,NONE
+msasl_test_1727_KTURNRi-wy0,deaf,msasl_26,spatial_shift_10pct,8% horizontal and vertical translation,74,16,0.534,deaf,0.875,deaf,0.704,0,True,False,NONE
+msasl_test_1727_KTURNRi-wy0,deaf,msasl_26,scale_down_0.75x,25% distance scaling / zoom out,74,16,0.534,deaf,0.934,deaf,0.76,0,True,False,NONE

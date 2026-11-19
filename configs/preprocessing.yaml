@@ -1,0 +1,99 @@
+# EchoGesture Preprocessing Configuration
+# =========================================
+
+preprocessing:
+  # Frame extraction
+  frame_extraction:
+    strategy: "uniform_sampling"  # uniform_sampling | fps_based | keyframe
+    target_frames: 30             # Number of frames per clip
+    min_frames: 10                # Minimum acceptable frames
+    max_frames: 60                # Maximum frames before downsampling
+    
+  # Frame resizing
+  resize:
+    target_size: [224, 224]       # Width x Height for processing
+    maintain_aspect_ratio: true
+    interpolation: "INTER_LINEAR"
+    
+  # Color processing
+  color:
+    format: "RGB"                 # RGB for MediaPipe
+    normalize: false              # MediaPipe handles its own normalization
+    
+  # Quality checks
+  validation:
+    check_corruption: true
+    min_frame_count: 5
+    check_resolution: true
+    min_resolution: 100
+    log_failures: true
+    failure_log: "reports/preprocessing_failures.log"
+
+# MediaPipe Landmark Configuration
+landmarks:
+  # Hand landmarks
+  hands:
+    model_complexity: 1           # 0 = lite, 1 = full
+    max_num_hands: 2
+    min_detection_confidence: 0.5
+    min_tracking_confidence: 0.5
+    static_image_mode: false      # Set true for per-frame, false for video tracking
+    
+  # Pose landmarks  
+  pose:
+    model_complexity: 1
+    min_detection_confidence: 0.5
+    min_tracking_confidence: 0.5
+    enable_segmentation: false
+    
+  # Holistic (alternative)
+  holistic:
+    model_complexity: 1
+    min_detection_confidence: 0.5
+    min_tracking_confidence: 0.5
+    
+  # Landmark selection
+  selected_landmarks:
+    hand_landmarks: 21            # All 21 per hand
+    pose_landmarks:               # Subset of 33 pose landmarks
+      - 0   # nose
+      - 11  # left_shoulder
+      - 12  # right_shoulder  
+      - 13  # left_elbow
+      - 14  # right_elbow
+      - 15  # left_wrist
+      - 16  # right_wrist
+    pose_landmark_count: 7
+    
+  # Coordinate dimensions
+  dimensions: 3                   # x, y, z (z = depth estimate)
+  include_visibility: true        # Include visibility/confidence scores
+
+# Feature Engineering
+features:
+  # Normalization
+  normalization:
+    translation: "body_relative"  # body_relative | wrist_relative | none
+    scale: "shoulder_width"       # shoulder_width | hand_span | none
+    reference_point: "mid_shoulder"
+    
+  # Feature types to compute
+  computed_features:
+    raw_coordinates: true
+    body_relative_coords: true
+    hand_velocities: true
+    joint_angles: false           # Expensive, enable if needed
+    inter_hand_distance: true
+    landmark_confidence: true
+    missing_hand_mask: true
+    
+  # Temporal
+  temporal:
+    sequence_length: 30           # Must match frame_extraction.target_frames
+    padding_strategy: "repeat_last"  # zero | repeat_last | interpolate
+    
+  # Output format
+  output:
+    format: "numpy"               # numpy | tfrecord
+    dtype: "float32"
+    save_path: "data/landmarks/"

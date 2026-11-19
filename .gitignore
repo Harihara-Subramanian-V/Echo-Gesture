@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+echogesture_env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data - keep raw data out of git
+data/raw/
+data/processed/
+data/landmarks/
+data/splits/
+
+# Models - keep large model files out of git
+models/checkpoints/
+models/exported/
+models/quantized/
+*.h5
+*.pb
+*.tflite
+*.onnx
+*.pth
+
+# Outputs
+outputs/
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Environment files
+.env
+*.pem
+*.db

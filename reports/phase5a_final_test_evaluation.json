@@ -1,0 +1,32 @@
+{
+  "winning_configuration": "EXP_D",
+  "experiment_name": "Compact TCN + Velocity + Dynamic Augmentation (263-D)",
+  "feature_dim": 263,
+  "parameter_count": 112104,
+  "model_size_mb": 1.3583354949951172,
+  "latency_stats": {
+    "mean_ms": 21.786435999674723,
+    "median_ms": 21.93664999867906,
+    "p95_ms": 27.55909999505093,
+    "min_ms": 14.622800001234282,
+    "max_ms": 31.46310000010999
+  },
+  "test_results": {
+    "top1_accuracy": 0.6446700507614214,
+    "top5_accuracy": 0.8477157360406091,
+    "macro_precision": 0.6913240925740926,
+    "macro_recall": 0.6442857142857144,
+    "macro_f1": 0.6287114311127469,
+    "weighted_f1": 0.6467501403515297,
+    "test_sample_count": 197
+  },
+  "baseline_comparison": {
+    "baseline_top1": 0.5279,
+    "baseline_top5": 0.8223,
+    "baseline_macro_f1": 0.47,
+    "delta_top1": 0.11677005076142133,
+    "delta_top5": 0.025415736040609094,
+    "delta_macro_f1": 0.15871143111274688,
+    "is_improved": true
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "keras_float32": {
+    "model_path": "models/checkpoints/best_improved_model_v5a.keras",
+    "format": "Keras Float32",
+    "file_size_bytes": 1424318,
+    "file_size_kb": 1390.935546875,
+    "file_size_mb": 1.3583354949951172,
+    "mean_ms": 17.304309000464855,
+    "std_ms": 2.441578192230388,
+    "median_ms": 16.967850002401974,
+    "p95_ms": 21.379699996032286,
+    "min_ms": 13.56120000127703,
+    "max_ms": 29.216599999926984,
+    "throughput_fps": 57.78907438448634
+  },
+  "tflite_int8": {
+    "model_path": "models/quantized/echogesture_exp_d_int8.tflite",
+    "format": "TFLite INT8",
+    "file_size_bytes": 135464,
+    "file_size_kb": 132.2890625,
+    "file_size_mb": 0.12918853759765625,
+    "mean_ms": 0.11811699980171397,
+    "std_ms": 0.016831197415657702,
+    "median_ms": 0.10884999937843531,
+    "p95_ms": 0.14943499481887557,
+    "min_ms": 0.10509999992791563,
+    "max_ms": 0.17749999824445695,
+    "throughput_fps": 8466.181850865883
+  },
+  "compression_ratio": 10.514365440264573,
+  "latency_reduction_pct": 99.31741279123864,
+  "meets_edge_constraints": {
+    "model_size_under_20mb": true,
+    "p95_latency_under_50ms": true,
+    "int8_only_inference": true
+  }
+}

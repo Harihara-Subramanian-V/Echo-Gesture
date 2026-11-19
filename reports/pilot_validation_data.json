@@ -1,0 +1,1418 @@
+[
+  {
+    "sample": {
+      "org_text": "BOOK",
+      "clean_text": "book",
+      "start_time": 0.0,
+      "signer_id": 0,
+      "signer": -1,
+      "start": 0,
+      "end": 66,
+      "file": "BOOK(3)",
+      "label": 38,
+      "height": 360.0,
+      "fps": 25.0,
+      "end_time": 2.64,
+      "url": "https://www.youtube.com/watch?v=J7tP98oDxqE",
+      "text": "book",
+      "box": [
+        0.05569887161254883,
+        0.25173279643058777,
+        0.9968159794807434,
+        0.9009996652603149
+      ],
+      "width": 480.0,
+      "split": "train",
+      "target_gloss": "book"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_train_00_book_J7tP98oDxqE.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_train_00_book_J7tP98oDxqE.mp4",
+      "size_bytes": 64874,
+      "sample": {
+        "org_text": "BOOK",
+        "clean_text": "book",
+        "start_time": 0.0,
+        "signer_id": 0,
+        "signer": -1,
+        "start": 0,
+        "end": 66,
+        "file": "BOOK(3)",
+        "label": 38,
+        "height": 360.0,
+        "fps": 25.0,
+        "end_time": 2.64,
+        "url": "https://www.youtube.com/watch?v=J7tP98oDxqE",
+        "text": "book",
+        "box": [
+          0.05569887161254883,
+          0.25173279643058777,
+          0.9968159794807434,
+          0.9009996652603149
+        ],
+        "width": 480.0,
+        "split": "train",
+        "target_gloss": "book"
+      },
+      "target_duration": 2.64,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 2.64,
+      "target_duration": 2.64,
+      "duration_delta": 0.0,
+      "duration_acceptable": true,
+      "width": 480,
+      "height": 360,
+      "codec": "h264",
+      "fps": 25.0,
+      "size_bytes": 64874,
+      "bitrate": 196587
+    }
+  },
+  {
+    "sample": {
+      "org_text": "Deaf",
+      "clean_text": "deaf",
+      "start_time": 0.0,
+      "signer_id": 38,
+      "signer": 52,
+      "start": 0,
+      "end": 107,
+      "file": "Deaf in American Sign Language",
+      "label": 9,
+      "height": 270.0,
+      "fps": 29.917,
+      "end_time": 3.577,
+      "url": "www.youtube.com/watch?v=IgT0jDp56ZM",
+      "text": "deaf",
+      "box": [
+        0.03361624479293823,
+        0.2778458893299103,
+        1.0,
+        0.7112260460853577
+      ],
+      "width": 480.0,
+      "split": "train",
+      "target_gloss": "deaf"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_train_02_deaf_IgT0jDp56ZM.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_train_02_deaf_IgT0jDp56ZM.mp4",
+      "size_bytes": 122368,
+      "sample": {
+        "org_text": "Deaf",
+        "clean_text": "deaf",
+        "start_time": 0.0,
+        "signer_id": 38,
+        "signer": 52,
+        "start": 0,
+        "end": 107,
+        "file": "Deaf in American Sign Language",
+        "label": 9,
+        "height": 270.0,
+        "fps": 29.917,
+        "end_time": 3.577,
+        "url": "www.youtube.com/watch?v=IgT0jDp56ZM",
+        "text": "deaf",
+        "box": [
+          0.03361624479293823,
+          0.2778458893299103,
+          1.0,
+          0.7112260460853577
+        ],
+        "width": 480.0,
+        "split": "train",
+        "target_gloss": "deaf"
+      },
+      "target_duration": 3.577,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 3.6036,
+      "target_duration": 3.577,
+      "duration_delta": 0.02660000000000018,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 29.97,
+      "size_bytes": 122368,
+      "bitrate": 271657
+    }
+  },
+  {
+    "sample": {
+      "org_text": "like",
+      "clean_text": "like",
+      "start_time": 0.0,
+      "signer_id": 269,
+      "signer": 53,
+      "start": 0,
+      "end": 52,
+      "file": "SignSchool really like",
+      "label": 6,
+      "height": 360.0,
+      "fps": 29.97,
+      "end_time": 1.735,
+      "url": "www.youtube.com/watch?v=7y5Ye-2-ZBs",
+      "text": "like",
+      "box": [
+        0.04046148061752319,
+        0.3353118896484375,
+        0.998772382736206,
+        0.886972963809967
+      ],
+      "width": 640.0,
+      "split": "train",
+      "target_gloss": "like"
+    },
+    "download_result": {
+      "status": "failed",
+      "filename": "msasl_pilot_train_01_like_7y5Ye-2-ZBs.mp4",
+      "filepath": null,
+      "error": "ERROR: [youtube] 7y5Ye-2-ZBs: This video is private. If the owner of this video has granted you access, please sign in. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies",
+      "sample": {
+        "org_text": "like",
+        "clean_text": "like",
+        "start_time": 0.0,
+        "signer_id": 269,
+        "signer": 53,
+        "start": 0,
+        "end": 52,
+        "file": "SignSchool really like",
+        "label": 6,
+        "height": 360.0,
+        "fps": 29.97,
+        "end_time": 1.735,
+        "url": "www.youtube.com/watch?v=7y5Ye-2-ZBs",
+        "text": "like",
+        "box": [
+          0.04046148061752319,
+          0.3353118896484375,
+          0.998772382736206,
+          0.886972963809967
+        ],
+        "width": 640.0,
+        "split": "train",
+        "target_gloss": "like"
+      },
+      "target_duration": 1.735,
+      "attempt": 3
+    },
+    "ffprobe_result": {
+      "valid": false,
+      "error": "ERROR: [youtube] 7y5Ye-2-ZBs: This video is private. If the owner of this video has granted you access, please sign in. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
+    }
+  },
+  {
+    "sample": {
+      "org_text": "MOM",
+      "clean_text": "mother",
+      "start_time": 4.805,
+      "signer_id": 8,
+      "signer": 20,
+      "start": 144,
+      "end": 198,
+      "file": "Basic ASL Vocabulary for Babies",
+      "label": 19,
+      "height": 360.0,
+      "fps": 29.97,
+      "end_time": 6.607,
+      "url": "https://www.youtube.com/watch?v=htsdwxJ-fTo",
+      "text": "mother",
+      "box": [
+        0.09814456105232239,
+        0.3193633556365967,
+        1.0,
+        0.7622225284576416
+      ],
+      "width": 640.0,
+      "split": "train",
+      "target_gloss": "mother"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_train_03_mother_htsdwxJ-fTo.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_train_03_mother_htsdwxJ-fTo.mp4",
+      "size_bytes": 71037,
+      "sample": {
+        "org_text": "MOM",
+        "clean_text": "mother",
+        "start_time": 4.805,
+        "signer_id": 8,
+        "signer": 20,
+        "start": 144,
+        "end": 198,
+        "file": "Basic ASL Vocabulary for Babies",
+        "label": 19,
+        "height": 360.0,
+        "fps": 29.97,
+        "end_time": 6.607,
+        "url": "https://www.youtube.com/watch?v=htsdwxJ-fTo",
+        "text": "mother",
+        "box": [
+          0.09814456105232239,
+          0.3193633556365967,
+          1.0,
+          0.7622225284576416
+        ],
+        "width": 640.0,
+        "split": "train",
+        "target_gloss": "mother"
+      },
+      "target_duration": 1.8020000000000005,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 1.868167,
+      "target_duration": 1.8020000000000005,
+      "duration_delta": 0.06616699999999942,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 29.97,
+      "size_bytes": 71037,
+      "bitrate": 304199
+    }
+  },
+  {
+    "sample": {
+      "org_text": "blue",
+      "clean_text": "blue",
+      "start_time": 0.0,
+      "signer_id": 1,
+      "signer": 34,
+      "start": 0,
+      "end": 89,
+      "file": "ASL Vocabulary blue",
+      "label": 64,
+      "height": 360.0,
+      "fps": 29.97,
+      "end_time": 2.97,
+      "url": "https://www.youtube.com/watch?v=U_nbv5Mq00c",
+      "text": "blue",
+      "box": [
+        0.0,
+        0.1320563554763794,
+        1.0,
+        1.0
+      ],
+      "width": 640.0,
+      "split": "train",
+      "target_gloss": "blue"
+    },
+    "download_result": {
+      "status": "failed",
+      "filename": "msasl_pilot_train_04_blue_U_nbv5Mq00c.mp4",
+      "filepath": null,
+      "error": "ERROR: [youtube] U_nbv5Mq00c: This video is unavailable",
+      "sample": {
+        "org_text": "blue",
+        "clean_text": "blue",
+        "start_time": 0.0,
+        "signer_id": 1,
+        "signer": 34,
+        "start": 0,
+        "end": 89,
+        "file": "ASL Vocabulary blue",
+        "label": 64,
+        "height": 360.0,
+        "fps": 29.97,
+        "end_time": 2.97,
+        "url": "https://www.youtube.com/watch?v=U_nbv5Mq00c",
+        "text": "blue",
+        "box": [
+          0.0,
+          0.1320563554763794,
+          1.0,
+          1.0
+        ],
+        "width": 640.0,
+        "split": "train",
+        "target_gloss": "blue"
+      },
+      "target_duration": 2.97,
+      "attempt": 3
+    },
+    "ffprobe_result": {
+      "valid": false,
+      "error": "ERROR: [youtube] U_nbv5Mq00c: This video is unavailable"
+    }
+  },
+  {
+    "sample": {
+      "org_text": "can",
+      "clean_text": "can",
+      "start_time": 0.0,
+      "signer_id": 52,
+      "signer": 66,
+      "start": 0,
+      "end": 79,
+      "file": "can(2)",
+      "label": 142,
+      "height": 360.0,
+      "fps": 29.97,
+      "end_time": 2.636,
+      "url": "www.youtube.com/watch?v=trqyl20lEno",
+      "text": "can",
+      "box": [
+        0.11395350098609924,
+        0.2751738429069519,
+        0.9967539310455322,
+        0.7224783897399902
+      ],
+      "width": 640.0,
+      "split": "train",
+      "target_gloss": "can"
+    },
+    "download_result": {
+      "status": "failed",
+      "filename": "msasl_pilot_train_05_can_trqyl20lEno.mp4",
+      "filepath": null,
+      "error": "ERROR: [youtube] trqyl20lEno: This video is unavailable",
+      "sample": {
+        "org_text": "can",
+        "clean_text": "can",
+        "start_time": 0.0,
+        "signer_id": 52,
+        "signer": 66,
+        "start": 0,
+        "end": 79,
+        "file": "can(2)",
+        "label": 142,
+        "height": 360.0,
+        "fps": 29.97,
+        "end_time": 2.636,
+        "url": "www.youtube.com/watch?v=trqyl20lEno",
+        "text": "can",
+        "box": [
+          0.11395350098609924,
+          0.2751738429069519,
+          0.9967539310455322,
+          0.7224783897399902
+        ],
+        "width": 640.0,
+        "split": "train",
+        "target_gloss": "can"
+      },
+      "target_duration": 2.636,
+      "attempt": 3
+    },
+    "ffprobe_result": {
+      "valid": false,
+      "error": "ERROR: [youtube] trqyl20lEno: This video is unavailable"
+    }
+  },
+  {
+    "sample": {
+      "org_text": "fish",
+      "clean_text": "fish",
+      "start_time": 0.69,
+      "signer_id": 435,
+      "signer": 112,
+      "start": 20,
+      "end": 80,
+      "file": "fish",
+      "label": 25,
+      "height": 360.0,
+      "fps": 29.0,
+      "end_time": 2.759,
+      "url": "https://www.youtube.com/watch?v=jsF87QSfxpg",
+      "review": 1,
+      "text": "fish",
+      "box": [
+        0.014759957790374756,
+        0.28263381123542786,
+        1.0,
+        0.8039041757583618
+      ],
+      "width": 640.0,
+      "split": "train",
+      "target_gloss": "fish"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_train_07_fish_jsF87QSfxpg.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_train_07_fish_jsF87QSfxpg.mp4",
+      "size_bytes": 81844,
+      "sample": {
+        "org_text": "fish",
+        "clean_text": "fish",
+        "start_time": 0.69,
+        "signer_id": 435,
+        "signer": 112,
+        "start": 20,
+        "end": 80,
+        "file": "fish",
+        "label": 25,
+        "height": 360.0,
+        "fps": 29.0,
+        "end_time": 2.759,
+        "url": "https://www.youtube.com/watch?v=jsF87QSfxpg",
+        "review": 1,
+        "text": "fish",
+        "box": [
+          0.014759957790374756,
+          0.28263381123542786,
+          1.0,
+          0.8039041757583618
+        ],
+        "width": 640.0,
+        "split": "train",
+        "target_gloss": "fish"
+      },
+      "target_duration": 2.069,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 2.137459,
+      "target_duration": 2.069,
+      "duration_delta": 0.06845900000000027,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 29.0,
+      "size_bytes": 81844,
+      "bitrate": 306322
+    }
+  },
+  {
+    "sample": {
+      "org_text": "Help",
+      "clean_text": "help",
+      "start_time": 0.0,
+      "signer_id": 27,
+      "signer": 47,
+      "start": 0,
+      "end": 102,
+      "file": "Baby Sign Language Help",
+      "label": 50,
+      "height": 360.0,
+      "fps": 30.003,
+      "end_time": 3.4,
+      "url": "www.youtube.com/watch?v=3DbWOEtUigU",
+      "text": "help",
+      "box": [
+        0.034334659576416016,
+        0.22645653784275055,
+        0.9932874441146851,
+        0.7382850646972656
+      ],
+      "width": 640.0,
+      "split": "train",
+      "target_gloss": "help"
+    },
+    "download_result": {
+      "status": "failed",
+      "filename": "msasl_pilot_train_06_help_3DbWOEtUigU.mp4",
+      "filepath": null,
+      "error": "ERROR: [youtube] 3DbWOEtUigU: This video is unavailable",
+      "sample": {
+        "org_text": "Help",
+        "clean_text": "help",
+        "start_time": 0.0,
+        "signer_id": 27,
+        "signer": 47,
+        "start": 0,
+        "end": 102,
+        "file": "Baby Sign Language Help",
+        "label": 50,
+        "height": 360.0,
+        "fps": 30.003,
+        "end_time": 3.4,
+        "url": "www.youtube.com/watch?v=3DbWOEtUigU",
+        "text": "help",
+        "box": [
+          0.034334659576416016,
+          0.22645653784275055,
+          0.9932874441146851,
+          0.7382850646972656
+        ],
+        "width": 640.0,
+        "split": "train",
+        "target_gloss": "help"
+      },
+      "target_duration": 3.4,
+      "attempt": 3
+    },
+    "ffprobe_result": {
+      "valid": false,
+      "error": "ERROR: [youtube] 3DbWOEtUigU: This video is unavailable"
+    }
+  },
+  {
+    "sample": {
+      "org_text": "Black",
+      "clean_text": "black",
+      "start_time": 113.84,
+      "signer_id": 12,
+      "signer": 6,
+      "start": 2846,
+      "end": 2937,
+      "file": "Mastering ASL Unit 3 Vocabulary signed by Dr Wooten",
+      "label": 41,
+      "height": 360.0,
+      "fps": 25.0,
+      "end_time": 117.48,
+      "url": "https://www.youtube.com/watch?v=K8c-np9zNT8",
+      "review": 1,
+      "text": "black",
+      "box": [
+        0.2184312641620636,
+        0.26061609387397766,
+        1.0,
+        0.6936715245246887
+      ],
+      "width": 480.0,
+      "split": "train",
+      "target_gloss": "black"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_train_08_black_K8c-np9zNT8.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_train_08_black_K8c-np9zNT8.mp4",
+      "size_bytes": 68158,
+      "sample": {
+        "org_text": "Black",
+        "clean_text": "black",
+        "start_time": 113.84,
+        "signer_id": 12,
+        "signer": 6,
+        "start": 2846,
+        "end": 2937,
+        "file": "Mastering ASL Unit 3 Vocabulary signed by Dr Wooten",
+        "label": 41,
+        "height": 360.0,
+        "fps": 25.0,
+        "end_time": 117.48,
+        "url": "https://www.youtube.com/watch?v=K8c-np9zNT8",
+        "review": 1,
+        "text": "black",
+        "box": [
+          0.2184312641620636,
+          0.26061609387397766,
+          1.0,
+          0.6936715245246887
+        ],
+        "width": 480.0,
+        "split": "train",
+        "target_gloss": "black"
+      },
+      "target_duration": 3.6400000000000006,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 3.64,
+      "target_duration": 3.6400000000000006,
+      "duration_delta": 4.440892098500626e-16,
+      "duration_acceptable": true,
+      "width": 480,
+      "height": 360,
+      "codec": "h264",
+      "fps": 25.0,
+      "size_bytes": 68158,
+      "bitrate": 149797
+    }
+  },
+  {
+    "sample": {
+      "org_text": "DESK",
+      "clean_text": "table",
+      "start_time": 0.0,
+      "signer_id": 3,
+      "signer": -1,
+      "start": 0,
+      "end": 44,
+      "file": "DESK",
+      "label": 28,
+      "height": 360.0,
+      "fps": 15.0,
+      "end_time": 2.933,
+      "url": "https://www.youtube.com/watch?v=nhEw0JSb-XQ",
+      "text": "table",
+      "box": [
+        0.18823516368865967,
+        0.21023142337799072,
+        1.0,
+        0.7823123931884766
+      ],
+      "width": 480.0,
+      "split": "val",
+      "target_gloss": "table"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_val_10_table_nhEw0JSb-XQ.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_val_10_table_nhEw0JSb-XQ.mp4",
+      "size_bytes": 60255,
+      "sample": {
+        "org_text": "DESK",
+        "clean_text": "table",
+        "start_time": 0.0,
+        "signer_id": 3,
+        "signer": -1,
+        "start": 0,
+        "end": 44,
+        "file": "DESK",
+        "label": 28,
+        "height": 360.0,
+        "fps": 15.0,
+        "end_time": 2.933,
+        "url": "https://www.youtube.com/watch?v=nhEw0JSb-XQ",
+        "text": "table",
+        "box": [
+          0.18823516368865967,
+          0.21023142337799072,
+          1.0,
+          0.7823123931884766
+        ],
+        "width": 480.0,
+        "split": "val",
+        "target_gloss": "table"
+      },
+      "target_duration": 2.933,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 2.936267,
+      "target_duration": 2.933,
+      "duration_delta": 0.003267000000000131,
+      "duration_acceptable": true,
+      "width": 480,
+      "height": 360,
+      "codec": "h264",
+      "fps": 14.99,
+      "size_bytes": 60255,
+      "bitrate": 164167
+    }
+  },
+  {
+    "sample": {
+      "org_text": "DOG",
+      "clean_text": "dog",
+      "start_time": 118.986,
+      "signer_id": 18,
+      "signer": 58,
+      "start": 3566,
+      "end": 3685,
+      "file": "SWIC Community Ed Class Five",
+      "label": 108,
+      "height": 360.0,
+      "fps": 29.97,
+      "end_time": 122.956,
+      "url": "https://www.youtube.com/watch?v=E3ILIbZqcKY",
+      "text": "dog",
+      "box": [
+        0.0,
+        0.24685196578502655,
+        1.0,
+        0.7248697280883789
+      ],
+      "width": 640.0,
+      "split": "train",
+      "target_gloss": "dog"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_train_09_dog_E3ILIbZqcKY.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_train_09_dog_E3ILIbZqcKY.mp4",
+      "size_bytes": 240693,
+      "sample": {
+        "org_text": "DOG",
+        "clean_text": "dog",
+        "start_time": 118.986,
+        "signer_id": 18,
+        "signer": 58,
+        "start": 3566,
+        "end": 3685,
+        "file": "SWIC Community Ed Class Five",
+        "label": 108,
+        "height": 360.0,
+        "fps": 29.97,
+        "end_time": 122.956,
+        "url": "https://www.youtube.com/watch?v=E3ILIbZqcKY",
+        "text": "dog",
+        "box": [
+          0.0,
+          0.24685196578502655,
+          1.0,
+          0.7248697280883789
+        ],
+        "width": 640.0,
+        "split": "train",
+        "target_gloss": "dog"
+      },
+      "target_duration": 3.969999999999999,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 4.003633,
+      "target_duration": 3.969999999999999,
+      "duration_delta": 0.03363300000000091,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 29.97,
+      "size_bytes": 240693,
+      "bitrate": 480949
+    }
+  },
+  {
+    "sample": {
+      "org_text": "FAMiLY",
+      "clean_text": "family",
+      "start_time": 14.4,
+      "signer_id": 63,
+      "signer": 24,
+      "start": 432,
+      "end": 490,
+      "file": "Family Voc Unit",
+      "label": 44,
+      "height": 720.0,
+      "fps": 30.0,
+      "end_time": 16.333,
+      "url": "https://www.youtube.com/watch?v=GOczM9jk2xY",
+      "width": 1280.0,
+      "text": "family",
+      "box": [
+        0.09007436037063599,
+        0.19846031069755554,
+        0.998196005821228,
+        0.7558290362358093
+      ],
+      "review": 1,
+      "split": "val",
+      "target_gloss": "family"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_val_12_family_GOczM9jk2xY.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_val_12_family_GOczM9jk2xY.mp4",
+      "size_bytes": 96964,
+      "sample": {
+        "org_text": "FAMiLY",
+        "clean_text": "family",
+        "start_time": 14.4,
+        "signer_id": 63,
+        "signer": 24,
+        "start": 432,
+        "end": 490,
+        "file": "Family Voc Unit",
+        "label": 44,
+        "height": 720.0,
+        "fps": 30.0,
+        "end_time": 16.333,
+        "url": "https://www.youtube.com/watch?v=GOczM9jk2xY",
+        "width": 1280.0,
+        "text": "family",
+        "box": [
+          0.09007436037063599,
+          0.19846031069755554,
+          0.998196005821228,
+          0.7558290362358093
+        ],
+        "review": 1,
+        "split": "val",
+        "target_gloss": "family"
+      },
+      "target_duration": 1.932999999999998,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 1.933333,
+      "target_duration": 1.932999999999998,
+      "duration_delta": 0.0003330000000019151,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 30.0,
+      "size_bytes": 96964,
+      "bitrate": 401230
+    }
+  },
+  {
+    "sample": {
+      "org_text": "walk",
+      "clean_text": "walk",
+      "start_time": 100.233,
+      "signer_id": 125,
+      "signer": 8,
+      "start": 3004,
+      "end": 3112,
+      "file": "ASL I - Unit 4 Vocabulary Review",
+      "label": 80,
+      "height": 352.0,
+      "fps": 29.97,
+      "end_time": 103.837,
+      "url": "https://www.youtube.com/watch?v=koMZVbqiXf4",
+      "text": "walk",
+      "box": [
+        0.20209577679634094,
+        0.430135041475296,
+        0.9784495830535889,
+        0.9492446780204773
+      ],
+      "width": 640.0,
+      "split": "val",
+      "target_gloss": "walk"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_val_11_walk_koMZVbqiXf4.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_val_11_walk_koMZVbqiXf4.mp4",
+      "size_bytes": 213682,
+      "sample": {
+        "org_text": "walk",
+        "clean_text": "walk",
+        "start_time": 100.233,
+        "signer_id": 125,
+        "signer": 8,
+        "start": 3004,
+        "end": 3112,
+        "file": "ASL I - Unit 4 Vocabulary Review",
+        "label": 80,
+        "height": 352.0,
+        "fps": 29.97,
+        "end_time": 103.837,
+        "url": "https://www.youtube.com/watch?v=koMZVbqiXf4",
+        "text": "walk",
+        "box": [
+          0.20209577679634094,
+          0.430135041475296,
+          0.9784495830535889,
+          0.9492446780204773
+        ],
+        "width": 640.0,
+        "split": "val",
+        "target_gloss": "walk"
+      },
+      "target_duration": 3.603999999999999,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 3.636967,
+      "target_duration": 3.603999999999999,
+      "duration_delta": 0.032967000000000635,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 352,
+      "codec": "h264",
+      "fps": 29.97,
+      "size_bytes": 213682,
+      "bitrate": 470022
+    }
+  },
+  {
+    "sample": {
+      "org_text": "Bed",
+      "clean_text": "bed",
+      "start_time": 0.0,
+      "signer_id": 66,
+      "signer": 42,
+      "start": 0,
+      "end": 75,
+      "file": "Bed in Sign Language ASL Dictionary for kids",
+      "label": 188,
+      "height": 360.0,
+      "fps": 25.0,
+      "end_time": 3.0,
+      "url": "www.youtube.com/watch?v=ozlJnTAhj-k",
+      "text": "bed",
+      "box": [
+        0.008198738098144531,
+        0.23527976870536804,
+        1.0,
+        0.768885612487793
+      ],
+      "width": 640.0,
+      "split": "val",
+      "target_gloss": "bed"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_val_13_bed_ozlJnTAhj-k.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_val_13_bed_ozlJnTAhj-k.mp4",
+      "size_bytes": 100667,
+      "sample": {
+        "org_text": "Bed",
+        "clean_text": "bed",
+        "start_time": 0.0,
+        "signer_id": 66,
+        "signer": 42,
+        "start": 0,
+        "end": 75,
+        "file": "Bed in Sign Language ASL Dictionary for kids",
+        "label": 188,
+        "height": 360.0,
+        "fps": 25.0,
+        "end_time": 3.0,
+        "url": "www.youtube.com/watch?v=ozlJnTAhj-k",
+        "text": "bed",
+        "box": [
+          0.008198738098144531,
+          0.23527976870536804,
+          1.0,
+          0.768885612487793
+        ],
+        "width": 640.0,
+        "split": "val",
+        "target_gloss": "bed"
+      },
+      "target_duration": 3.0,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 3.0,
+      "target_duration": 3.0,
+      "duration_delta": 0.0,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 25.0,
+      "size_bytes": 100667,
+      "bitrate": 268445
+    }
+  },
+  {
+    "sample": {
+      "org_text": "Go",
+      "clean_text": "go",
+      "start_time": 12.479,
+      "signer_id": 140,
+      "signer": 36,
+      "start": 374,
+      "end": 398,
+      "file": "ASL - Family Vacation Places",
+      "label": 87,
+      "height": 720.0,
+      "fps": 29.97,
+      "end_time": 13.28,
+      "url": "https://www.youtube.com/watch?v=1b2TXYk0jbM",
+      "text": "go",
+      "box": [
+        0.092031329870224,
+        0.14388692378997803,
+        0.997050404548645,
+        0.8293707370758057
+      ],
+      "width": 1280.0,
+      "split": "val",
+      "target_gloss": "go"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_val_14_go_1b2TXYk0jbM.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_val_14_go_1b2TXYk0jbM.mp4",
+      "size_bytes": 33541,
+      "sample": {
+        "org_text": "Go",
+        "clean_text": "go",
+        "start_time": 12.479,
+        "signer_id": 140,
+        "signer": 36,
+        "start": 374,
+        "end": 398,
+        "file": "ASL - Family Vacation Places",
+        "label": 87,
+        "height": 720.0,
+        "fps": 29.97,
+        "end_time": 13.28,
+        "url": "https://www.youtube.com/watch?v=1b2TXYk0jbM",
+        "text": "go",
+        "box": [
+          0.092031329870224,
+          0.14388692378997803,
+          0.997050404548645,
+          0.8293707370758057
+        ],
+        "width": 1280.0,
+        "split": "val",
+        "target_gloss": "go"
+      },
+      "target_duration": 0.8010000000000002,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 0.834167,
+      "target_duration": 0.8010000000000002,
+      "duration_delta": 0.033166999999999836,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 29.97,
+      "size_bytes": 33541,
+      "bitrate": 321671
+    }
+  },
+  {
+    "sample": {
+      "org_text": "YEAR",
+      "clean_text": "year",
+      "start_time": 42.954,
+      "signer_id": 34,
+      "signer": 11,
+      "start": 1284,
+      "end": 1321,
+      "file": "UNIT 13 Vocabulary - turn on CC - Time  Days of the Week - ASL  American Sign Language",
+      "label": 158,
+      "height": 720.0,
+      "fps": 29.893,
+      "end_time": 44.191,
+      "url": "https://www.youtube.com/watch?v=iDFtTpXAMJE",
+      "text": "year",
+      "box": [
+        0.0014639198780059814,
+        0.16347765922546387,
+        0.9978114366531372,
+        0.9101057052612305
+      ],
+      "width": 1280.0,
+      "split": "test",
+      "target_gloss": "year"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_test_15_year_iDFtTpXAMJE.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_test_15_year_iDFtTpXAMJE.mp4",
+      "size_bytes": 108458,
+      "sample": {
+        "org_text": "YEAR",
+        "clean_text": "year",
+        "start_time": 42.954,
+        "signer_id": 34,
+        "signer": 11,
+        "start": 1284,
+        "end": 1321,
+        "file": "UNIT 13 Vocabulary - turn on CC - Time  Days of the Week - ASL  American Sign Language",
+        "label": 158,
+        "height": 720.0,
+        "fps": 29.893,
+        "end_time": 44.191,
+        "url": "https://www.youtube.com/watch?v=iDFtTpXAMJE",
+        "text": "year",
+        "box": [
+          0.0014639198780059814,
+          0.16347765922546387,
+          0.9978114366531372,
+          0.9101057052612305
+        ],
+        "width": 1280.0,
+        "split": "test",
+        "target_gloss": "year"
+      },
+      "target_duration": 1.2370000000000019,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 1.266016,
+      "target_duration": 1.2370000000000019,
+      "duration_delta": 0.029015999999998154,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 30.0,
+      "size_bytes": 108458,
+      "bitrate": 685349
+    }
+  },
+  {
+    "sample": {
+      "org_text": "CANDY",
+      "clean_text": "candy",
+      "start_time": 31.198,
+      "signer_id": 10,
+      "signer": 26,
+      "start": 935,
+      "end": 1045,
+      "file": "Lesson 8 Vocabulary - A Basic Course (ABC) in ASL",
+      "label": 166,
+      "height": 720.0,
+      "fps": 29.97,
+      "end_time": 34.868,
+      "url": "https://www.youtube.com/watch?v=HuViTIjghKk",
+      "width": 1280.0,
+      "text": "candy",
+      "box": [
+        0.2996726334095001,
+        0.2750644087791443,
+        0.9876804947853088,
+        0.7073653340339661
+      ],
+      "review": 1,
+      "split": "test",
+      "target_gloss": "candy"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_test_16_candy_HuViTIjghKk.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_test_16_candy_HuViTIjghKk.mp4",
+      "size_bytes": 74450,
+      "sample": {
+        "org_text": "CANDY",
+        "clean_text": "candy",
+        "start_time": 31.198,
+        "signer_id": 10,
+        "signer": 26,
+        "start": 935,
+        "end": 1045,
+        "file": "Lesson 8 Vocabulary - A Basic Course (ABC) in ASL",
+        "label": 166,
+        "height": 720.0,
+        "fps": 29.97,
+        "end_time": 34.868,
+        "url": "https://www.youtube.com/watch?v=HuViTIjghKk",
+        "width": 1280.0,
+        "text": "candy",
+        "box": [
+          0.2996726334095001,
+          0.2750644087791443,
+          0.9876804947853088,
+          0.7073653340339661
+        ],
+        "review": 1,
+        "split": "test",
+        "target_gloss": "candy"
+      },
+      "target_duration": 3.6700000000000017,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 3.703333,
+      "target_duration": 3.6700000000000017,
+      "duration_delta": 0.0333329999999985,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 29.97,
+      "size_bytes": 74450,
+      "bitrate": 160828
+    }
+  },
+  {
+    "sample": {
+      "org_text": "WHAT (Q)",
+      "clean_text": "what",
+      "start_time": 0.0,
+      "signer_id": 67,
+      "signer": 13,
+      "start": 0,
+      "end": 62,
+      "file": "WHAT (Q)",
+      "label": 15,
+      "height": 720.0,
+      "fps": 29.97,
+      "end_time": 2.069,
+      "url": "https://www.youtube.com/watch?v=AK26EQRsH7k",
+      "text": "what",
+      "box": [
+        0.0,
+        0.2591913938522339,
+        1.0,
+        0.7759594917297363
+      ],
+      "width": 1280.0,
+      "split": "test",
+      "target_gloss": "what"
+    },
+    "download_result": {
+      "status": "failed",
+      "filename": "msasl_pilot_test_17_what_AK26EQRsH7k.mp4",
+      "filepath": null,
+      "error": "ERROR: [youtube] AK26EQRsH7k: This video is unavailable",
+      "sample": {
+        "org_text": "WHAT (Q)",
+        "clean_text": "what",
+        "start_time": 0.0,
+        "signer_id": 67,
+        "signer": 13,
+        "start": 0,
+        "end": 62,
+        "file": "WHAT (Q)",
+        "label": 15,
+        "height": 720.0,
+        "fps": 29.97,
+        "end_time": 2.069,
+        "url": "https://www.youtube.com/watch?v=AK26EQRsH7k",
+        "text": "what",
+        "box": [
+          0.0,
+          0.2591913938522339,
+          1.0,
+          0.7759594917297363
+        ],
+        "width": 1280.0,
+        "split": "test",
+        "target_gloss": "what"
+      },
+      "target_duration": 2.069,
+      "attempt": 3
+    },
+    "ffprobe_result": {
+      "valid": false,
+      "error": "ERROR: [youtube] AK26EQRsH7k: This video is unavailable"
+    }
+  },
+  {
+    "sample": {
+      "org_text": "many",
+      "clean_text": "many",
+      "start_time": 0.0,
+      "signer_id": 11,
+      "signer": 39,
+      "start": 0,
+      "end": 65,
+      "file": "many",
+      "label": 261,
+      "height": 360.0,
+      "fps": 29.97,
+      "end_time": 2.169,
+      "url": "www.youtube.com/watch?v=eTmzHLtBOnU",
+      "text": "many",
+      "box": [
+        0.07611525058746338,
+        0.19286084175109863,
+        1.0,
+        0.7681566476821899
+      ],
+      "width": 480.0,
+      "split": "test",
+      "target_gloss": "many"
+    },
+    "download_result": {
+      "status": "failed",
+      "filename": "msasl_pilot_test_18_many_eTmzHLtBOnU.mp4",
+      "filepath": null,
+      "error": "ERROR: [youtube] eTmzHLtBOnU: This video is private. If the owner of this video has granted you access, please sign in. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies",
+      "sample": {
+        "org_text": "many",
+        "clean_text": "many",
+        "start_time": 0.0,
+        "signer_id": 11,
+        "signer": 39,
+        "start": 0,
+        "end": 65,
+        "file": "many",
+        "label": 261,
+        "height": 360.0,
+        "fps": 29.97,
+        "end_time": 2.169,
+        "url": "www.youtube.com/watch?v=eTmzHLtBOnU",
+        "text": "many",
+        "box": [
+          0.07611525058746338,
+          0.19286084175109863,
+          1.0,
+          0.7681566476821899
+        ],
+        "width": 480.0,
+        "split": "test",
+        "target_gloss": "many"
+      },
+      "target_duration": 2.169,
+      "attempt": 3
+    },
+    "ffprobe_result": {
+      "valid": false,
+      "error": "ERROR: [youtube] eTmzHLtBOnU: This video is private. If the owner of this video has granted you access, please sign in. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
+    }
+  },
+  {
+    "sample": {
+      "org_text": "CHAIR",
+      "clean_text": "sit",
+      "start_time": 54.6,
+      "signer_id": 101,
+      "signer": -1,
+      "start": 1638,
+      "end": 1688,
+      "file": "Learn ASL Basic Furniture Signs in American Sign Language for Beginners",
+      "label": 18,
+      "height": 360.0,
+      "fps": 30.0,
+      "end_time": 56.267,
+      "url": "https://www.youtube.com/watch?v=nHnqAu_1K-c",
+      "width": 640.0,
+      "text": "sit",
+      "box": [
+        0.09770378470420837,
+        0.07134151458740234,
+        1.0,
+        0.7872707843780518
+      ],
+      "review": 1,
+      "split": "test",
+      "target_gloss": "chair"
+    },
+    "download_result": {
+      "status": "success",
+      "filename": "msasl_pilot_test_19_chair_nHnqAu_1K-c.mp4",
+      "filepath": "c:\\EchoCam\\data\\raw\\ms_asl\\msasl_pilot_test_19_chair_nHnqAu_1K-c.mp4",
+      "size_bytes": 69910,
+      "sample": {
+        "org_text": "CHAIR",
+        "clean_text": "sit",
+        "start_time": 54.6,
+        "signer_id": 101,
+        "signer": -1,
+        "start": 1638,
+        "end": 1688,
+        "file": "Learn ASL Basic Furniture Signs in American Sign Language for Beginners",
+        "label": 18,
+        "height": 360.0,
+        "fps": 30.0,
+        "end_time": 56.267,
+        "url": "https://www.youtube.com/watch?v=nHnqAu_1K-c",
+        "width": 640.0,
+        "text": "sit",
+        "box": [
+          0.09770378470420837,
+          0.07134151458740234,
+          1.0,
+          0.7872707843780518
+        ],
+        "review": 1,
+        "split": "test",
+        "target_gloss": "chair"
+      },
+      "target_duration": 1.6670000000000016,
+      "attempt": 1
+    },
+    "ffprobe_result": {
+      "valid": true,
+      "actual_duration": 1.7,
+      "target_duration": 1.6670000000000016,
+      "duration_delta": 0.032999999999998364,
+      "duration_acceptable": true,
+      "width": 640,
+      "height": 360,
+      "codec": "h264",
+      "fps": 30.0,
+      "size_bytes": 69910,
+      "bitrate": 328988
+    }
+  }
+]
