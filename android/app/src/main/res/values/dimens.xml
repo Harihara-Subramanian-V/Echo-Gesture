@@ -9,4 +9,8 @@
     <dimen name="text_size_hero_sign">28sp</dimen>
     <dimen name="text_size_confidence">16sp</dimen>
     <dimen name="hero_card_height">120dp</dimen>
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">6dp</dimen>
+    <dimen name="text_size_status">12sp</dimen>
+    <dimen name="text_size_top_candidates">12sp</dimen>
 </resources>

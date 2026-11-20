@@ -122,13 +122,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_medium"
         android:layout_marginEnd="@dimen/padding_medium"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/padding_small"
         app:cardBackgroundColor="@color/hud_background"
         app:cardCornerRadius="@dimen/corner_radius_hud"
         app:cardElevation="6dp"
         app:strokeWidth="1dp"
         app:strokeColor="#33FFFFFF"
-        app:layout_constraintBottom_toTopOf="@id/buttonRow"
+        app:layout_constraintBottom_toTopOf="@id/speechButtonRow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -152,7 +152,7 @@
                 android:id="@+id/tvConfidence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/margin_tiny"
                 android:text="@string/label_confidence"
                 android:textColor="@color/hud_accent_blue"
                 android:textSize="@dimen/text_size_confidence"
@@ -162,12 +162,68 @@
                 android:id="@+id/tvTopCandidates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/margin_tiny"
                 android:text="@string/label_top_candidates"
                 android:textColor="@color/hud_text_secondary"
-                android:textSize="12sp" />
+                android:textSize="@dimen/text_size_top_candidates" />
+
+            <!-- Speech Status Indicator -->
+            <TextView
+                android:id="@+id/tvSpeechStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@string/label_speech_ready"
+                android:textColor="@color/hud_accent_cyan"
+                android:textSize="@dimen/text_size_status"
+                android:textStyle="bold" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <!-- Speech Action Controls Row -->
+    <LinearLayout
+        android:id="@+id/speechButtonRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:layout_marginEnd="@dimen/padding_medium"
+        android:layout_marginBottom="@dimen/padding_small"
+        app:layout_constraintBottom_toTopOf="@id/buttonRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnToggleSpeech"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/margin_tiny"
+            android:text="@string/action_speech_on"
+            android:textSize="@dimen/text_size_status"
+            app:cornerRadius="@dimen/corner_radius_hud" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReplay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_tiny"
+            android:layout_marginEnd="@dimen/margin_tiny"
+            android:text="@string/action_replay"
+            android:textSize="@dimen/text_size_status"
+            app:cornerRadius="@dimen/corner_radius_hud" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_tiny"
+            android:text="@string/action_clear"
+            android:textSize="@dimen/text_size_status"
+            app:cornerRadius="@dimen/corner_radius_hud" />
+    </LinearLayout>
 
     <!-- Bottom Control Row -->
     <LinearLayout
@@ -187,7 +243,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="6dp"
+            android:layout_marginEnd="@dimen/margin_small"
             android:text="@string/action_stop"
             app:cornerRadius="@dimen/corner_radius_hud" />
 
@@ -196,7 +252,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="@dimen/margin_small"
             android:text="@string/action_switch_camera"
             app:cornerRadius="@dimen/corner_radius_hud" />
     </LinearLayout>

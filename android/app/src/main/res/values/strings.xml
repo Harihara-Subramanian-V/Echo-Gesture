@@ -25,4 +25,21 @@
     <string name="action_stop">Stop Capture</string>
     <string name="action_switch_camera">Switch Camera</string>
     <string name="action_grant_permission">Grant Permission</string>
+    <string name="action_speech_on">Speech: ON</string>
+    <string name="action_speech_off">Speech: OFF</string>
+    <string name="action_replay">Replay</string>
+    <string name="action_clear">Clear</string>
+    <string name="label_speech_ready">Speech: Ready</string>
+    <string name="label_speech_speaking">Speech: Speaking...</string>
+    <string name="label_speech_muted">Speech: Muted</string>
+    <string name="label_speech_unavailable">Speech: Unavailable</string>
+    <string name="label_last_spoken">Spoken: %s</string>
+    <string name="format_confidence">Confidence: %.1f%%</string>
+    <string name="format_fps">FPS: %.1f</string>
+    <string name="format_top_candidates">Top: %s</string>
+    <string name="format_latency_breakdown">Latency: %1$.1f ms (Vision: %2$.1f ms | Inf: %3$.1f ms)</string>
+    <string name="format_collecting_frames">%1$s (%2$d/16)</string>
+    <string name="format_tracking_lost">%1$s (%2$d/12)</string>
+    <string name="error_model_init">Model Error: %s</string>
+    <string name="error_pipeline_init">Init Error: %s</string>
 </resources>

@@ -19,6 +19,9 @@ import com.echogesture.app.engine.RecognitionPipeline
 import com.echogesture.app.inference.LiteRtModelRunner
 import com.echogesture.app.preprocessing.SequenceNormalizer
 import com.echogesture.app.preprocessing.SequencePreprocessor263D
+import com.echogesture.app.speech.PredictionSpeechCoordinator
+import com.echogesture.app.speech.SpeechEventListener
+import com.echogesture.app.speech.TextToSpeechManager
 import com.echogesture.app.stabilization.RecognitionState
 import com.echogesture.app.vision.HandLandmarkDetector
 import java.util.Locale
@@ -32,6 +35,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var cameraController: CameraController? = null
     private var pipeline: RecognitionPipeline? = null
+    private var ttsManager: TextToSpeechManager? = null
+    private var speechCoordinator: PredictionSpeechCoordinator? = null
     private var isCapturing = true
 
     // Real-time Preview / Display Rendering FPS measurement
@@ -78,9 +83,37 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initializePipeline()
+        initializeSpeech()
         setupListeners()
         checkCameraPermission()
         handleIntent(intent)
+    }
+
+    private fun initializeSpeech() {
+        val tts = TextToSpeechManager(this)
+        val coordinator = PredictionSpeechCoordinator(tts)
+        this.ttsManager = tts
+        this.speechCoordinator = coordinator
+
+        tts.setSpeechEventListener(object : SpeechEventListener {
+            override fun onSpeechStart(utteranceId: String) {
+                runOnUiThread { this@MainActivity.updateSpeechStatusUi() }
+            }
+
+            override fun onSpeechDone(utteranceId: String) {
+                runOnUiThread { this@MainActivity.updateSpeechStatusUi() }
+            }
+
+            override fun onSpeechError(utteranceId: String, errorCode: Int) {
+                runOnUiThread { this@MainActivity.updateSpeechStatusUi() }
+            }
+        })
+
+        tts.initialize { success ->
+            runOnUiThread {
+                this@MainActivity.updateSpeechStatusUi()
+            }
+        }
     }
 
     override fun onNewIntent(intent: android.content.Intent?) {
@@ -211,7 +244,7 @@ class MainActivity : AppCompatActivity() {
             val modelRunner = LiteRtModelRunner(this)
             val modelStatus = modelRunner.initialize(numThreads = 2)
             if (!modelStatus.isLoaded) {
-                binding.tvModelStatus.text = "Model Error: ${modelStatus.errorMessage}"
+                binding.tvModelStatus.text = getString(R.string.error_model_init, modelStatus.errorMessage.orEmpty())
                 Log.e(TAG, "LiteRT Initialization Failed: ${modelStatus.errorMessage}")
                 return
             }
@@ -240,7 +273,7 @@ class MainActivity : AppCompatActivity() {
 
         } catch (e: Exception) {
             Log.e(TAG, "Failed to initialize recognition pipeline: ${e.message}", e)
-            binding.tvModelStatus.text = "Init Error: ${e.message}"
+            binding.tvModelStatus.text = getString(R.string.error_pipeline_init, e.message.orEmpty())
         }
     }
 
@@ -290,6 +323,7 @@ class MainActivity : AppCompatActivity() {
                 cameraController?.pause()
                 binding.btnToggleCapture.text = getString(R.string.action_start)
                 binding.landmarkOverlayView.clear()
+                ttsManager?.stop()
             }
         }
 
@@ -301,6 +335,67 @@ class MainActivity : AppCompatActivity() {
         binding.btnGrantPermission.setOnClickListener {
             checkCameraPermission()
         }
+
+        binding.btnToggleSpeech.setOnClickListener {
+            val coordinator = speechCoordinator ?: return@setOnClickListener
+            val tts = ttsManager ?: return@setOnClickListener
+            val newState = !coordinator.isEnabled
+            coordinator.isEnabled = newState
+            tts.isEnabled = newState
+            binding.btnToggleSpeech.text = if (newState) {
+                getString(R.string.action_speech_on)
+            } else {
+                getString(R.string.action_speech_off)
+            }
+            updateSpeechStatusUi()
+        }
+
+        binding.btnReplay.setOnClickListener {
+            speechCoordinator?.replay()
+            updateSpeechStatusUi()
+        }
+
+        binding.btnClear.setOnClickListener {
+            speechCoordinator?.clear()
+            pipeline?.temporalBuffer?.clear()
+            pipeline?.stabilizer?.reset()
+            binding.landmarkOverlayView.clear()
+            binding.tvRecognizedSign.text = getString(R.string.label_recognized_sign)
+            binding.tvConfidence.text = getString(R.string.label_confidence)
+            binding.tvConfidence.setTextColor(ContextCompat.getColor(this, R.color.hud_accent_blue))
+            binding.tvTopCandidates.text = getString(R.string.label_top_candidates)
+            updateSpeechStatusUi()
+        }
+    }
+
+    private fun updateSpeechStatusUi() {
+        val coordinator = speechCoordinator
+        val tts = ttsManager
+
+        if (coordinator == null || tts == null || !tts.isInitialized) {
+            binding.tvSpeechStatus.text = getString(R.string.label_speech_unavailable)
+            binding.tvSpeechStatus.setTextColor(ContextCompat.getColor(this, R.color.hud_accent_red))
+            binding.btnReplay.isEnabled = false
+            return
+        }
+
+        if (!coordinator.isEnabled || !tts.isEnabled) {
+            binding.tvSpeechStatus.text = getString(R.string.label_speech_muted)
+            binding.tvSpeechStatus.setTextColor(ContextCompat.getColor(this, R.color.hud_accent_amber))
+        } else if (tts.isSpeaking) {
+            binding.tvSpeechStatus.text = getString(R.string.label_speech_speaking)
+            binding.tvSpeechStatus.setTextColor(ContextCompat.getColor(this, R.color.hud_accent_green))
+        } else {
+            val lastSpoken = coordinator.lastSpokenSign
+            if (lastSpoken != null) {
+                binding.tvSpeechStatus.text = getString(R.string.label_last_spoken, lastSpoken.uppercase())
+            } else {
+                binding.tvSpeechStatus.text = getString(R.string.label_speech_ready)
+            }
+            binding.tvSpeechStatus.setTextColor(ContextCompat.getColor(this, R.color.hud_accent_cyan))
+        }
+
+        binding.btnReplay.isEnabled = coordinator.lastSpokenSign != null
     }
 
     private fun updateUi(uiState: PipelineUiState) {
@@ -314,7 +409,7 @@ class MainActivity : AppCompatActivity() {
                 R.color.hud_accent_amber
             )
             RecognitionState.COLLECTING_FRAMES -> Pair(
-                "${getString(R.string.status_collecting_frames)} (${uiState.bufferFill}/16)",
+                getString(R.string.format_collecting_frames, getString(R.string.status_collecting_frames), uiState.bufferFill),
                 R.color.hud_accent_blue
             )
             RecognitionState.RECOGNIZING -> Pair(
@@ -326,7 +421,7 @@ class MainActivity : AppCompatActivity() {
                 R.color.hud_accent_green
             )
             RecognitionState.TRACKING_LOST -> Pair(
-                "${getString(R.string.status_tracking_lost)} (${uiState.consecutiveIdleFrames}/12)",
+                getString(R.string.format_tracking_lost, getString(R.string.status_tracking_lost), uiState.consecutiveIdleFrames),
                 R.color.hud_accent_amber
             )
             RecognitionState.IDLE -> Pair(
@@ -341,11 +436,11 @@ class MainActivity : AppCompatActivity() {
         if (uiState.state == RecognitionState.ACTIVE_PREDICTION ||
             (uiState.state == RecognitionState.TRACKING_LOST && uiState.recognizedSign != "IDLE")) {
             binding.tvRecognizedSign.text = uiState.recognizedSign.uppercase()
-            binding.tvConfidence.text = String.format("Confidence: %.1f%%", uiState.confidence * 100f)
+            binding.tvConfidence.text = getString(R.string.format_confidence, uiState.confidence * 100f)
             binding.tvConfidence.setTextColor(ContextCompat.getColor(this, R.color.hud_accent_green))
         } else {
             binding.tvRecognizedSign.text = uiState.recognizedSign
-            binding.tvConfidence.text = String.format("Confidence: %.1f%%", uiState.confidence * 100f)
+            binding.tvConfidence.text = getString(R.string.format_confidence, uiState.confidence * 100f)
             binding.tvConfidence.setTextColor(ContextCompat.getColor(this, R.color.hud_accent_blue))
         }
 
@@ -354,20 +449,24 @@ class MainActivity : AppCompatActivity() {
             val candidateText = uiState.topCandidates.joinToString("  |  ") {
                 "${it.className}: ${(it.confidence * 100).toInt()}%"
             }
-            binding.tvTopCandidates.text = "Top: $candidateText"
+            binding.tvTopCandidates.text = getString(R.string.format_top_candidates, candidateText)
             binding.tvTopCandidates.visibility = View.VISIBLE
         } else {
             binding.tvTopCandidates.text = getString(R.string.label_top_candidates)
         }
 
         // 5. Update FPS and Latency Breakdown Telemetry
-        binding.tvFpsInfo.text = String.format("FPS: %.1f", uiState.fps)
-        binding.tvLatencyBreakdown.text = String.format(
-            "Latency: %.1f ms (Vision: %.1f ms | Inf: %.1f ms)",
+        binding.tvFpsInfo.text = getString(R.string.format_fps, uiState.fps)
+        binding.tvLatencyBreakdown.text = getString(
+            R.string.format_latency_breakdown,
             uiState.latencies.totalMs,
             uiState.latencies.detectionMs + uiState.latencies.featureMs,
             uiState.latencies.inferenceMs
         )
+
+        // 6. Speech Coordination & Status Update
+        speechCoordinator?.onPredictionState(uiState)
+        updateSpeechStatusUi()
     }
 
     override fun onResume() {
@@ -380,6 +479,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         Choreographer.getInstance().removeFrameCallback(frameCallback)
+        ttsManager?.stop()
     }
 
     override fun onDestroy() {
@@ -387,5 +487,7 @@ class MainActivity : AppCompatActivity() {
         Choreographer.getInstance().removeFrameCallback(frameCallback)
         cameraController?.shutdown()
         pipeline?.close()
+        speechCoordinator?.stop()
+        ttsManager?.shutdown()
     }
 }
