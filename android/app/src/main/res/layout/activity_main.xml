@@ -14,6 +14,12 @@
         android:layout_height="match_parent"
         app:scaleType="fillCenter" />
 
+    <!-- Real-time Hand Landmark Skeleton Overlay -->
+    <com.echogesture.app.ui.HandLandmarkOverlayView
+        android:id="@+id/landmarkOverlayView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <!-- Top Engineering Diagnostic HUD Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/diagnosticHudCard"
@@ -23,7 +29,8 @@
         app:cardBackgroundColor="@color/hud_background"
         app:cardCornerRadius="@dimen/corner_radius_hud"
         app:cardElevation="4dp"
-        app:strokeWidth="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#33FFFFFF"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -34,20 +41,55 @@
             android:orientation="vertical"
             android:padding="@dimen/padding_medium">
 
+            <!-- Title & Status Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvHudTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/title_diagnostic_hud"
+                    android:textColor="@color/hud_accent_cyan"
+                    android:textSize="@dimen/text_size_hud_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvFpsInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_fps"
+                    android:textColor="@color/hud_accent_green"
+                    android:textSize="@dimen/text_size_hud_body"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:background="#22FFFFFF" />
+
+            <!-- Pipeline State & Camera Details -->
             <TextView
-                android:id="@+id/tvHudTitle"
+                android:id="@+id/tvRecognitionState"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_diagnostic_hud"
-                android:textColor="@color/hud_accent_green"
-                android:textSize="@dimen/text_size_hud_title"
+                android:text="@string/status_waiting_for_hands"
+                android:textColor="@color/hud_accent_amber"
+                android:textSize="@dimen/text_size_hud_body"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvCameraStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_small"
+                android:layout_marginTop="2dp"
                 android:text="@string/label_camera_status"
                 android:textColor="@color/hud_text_primary"
                 android:textSize="@dimen/text_size_hud_body" />
@@ -57,27 +99,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@string/label_model_status"
-                android:textColor="@color/hud_text_primary"
-                android:textSize="@dimen/text_size_hud_body" />
-
-            <TextView
-                android:id="@+id/tvTensorContract"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="@string/label_input_tensor"
+                android:text="@string/label_model_ready"
                 android:textColor="@color/hud_text_secondary"
                 android:textSize="@dimen/text_size_hud_body" />
 
             <TextView
-                android:id="@+id/tvLatency"
+                android:id="@+id/tvLatencyBreakdown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@string/label_inference_latency"
-                android:textColor="@color/hud_accent_amber"
+                android:text="@string/label_latency_breakdown"
+                android:textColor="@color/hud_accent_green"
                 android:textSize="@dimen/text_size_hud_body" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -86,12 +120,15 @@
         android:id="@+id/heroSignCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_medium"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:layout_marginEnd="@dimen/padding_medium"
+        android:layout_marginBottom="8dp"
         app:cardBackgroundColor="@color/hud_background"
         app:cardCornerRadius="@dimen/corner_radius_hud"
         app:cardElevation="6dp"
-        app:strokeWidth="0dp"
-        app:layout_constraintBottom_toTopOf="@id/btnToggleCapture"
+        app:strokeWidth="1dp"
+        app:strokeColor="#33FFFFFF"
+        app:layout_constraintBottom_toTopOf="@id/buttonRow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -118,21 +155,51 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/label_confidence"
                 android:textColor="@color/hud_accent_blue"
-                android:textSize="@dimen/text_size_confidence" />
+                android:textSize="@dimen/text_size_confidence"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTopCandidates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/label_top_candidates"
+                android:textColor="@color/hud_text_secondary"
+                android:textSize="12sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Toggle Capture Control Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnToggleCapture"
+    <!-- Bottom Control Row -->
+    <LinearLayout
+        android:id="@+id/buttonRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_medium"
-        android:text="@string/action_stop"
-        app:cornerRadius="@dimen/corner_radius_hud"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:layout_marginEnd="@dimen/padding_medium"
+        android:layout_marginBottom="@dimen/padding_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnToggleCapture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:text="@string/action_stop"
+            app:cornerRadius="@dimen/corner_radius_hud" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSwitchCamera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="@string/action_switch_camera"
+            app:cornerRadius="@dimen/corner_radius_hud" />
+    </LinearLayout>
 
     <!-- Permission Fallback View -->
     <LinearLayout

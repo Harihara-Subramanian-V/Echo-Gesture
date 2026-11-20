@@ -7,10 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="hud_background">#CC111827</color>
+    <color name="hud_background">#E6111827</color>
+    <color name="hud_panel_bg">#CC1F2937</color>
     <color name="hud_text_primary">#FFF9FAFB</color>
     <color name="hud_text_secondary">#FF9CA3AF</color>
     <color name="hud_accent_green">#FF10B981</color>
     <color name="hud_accent_blue">#FF3B82F6</color>
     <color name="hud_accent_amber">#FFF59E0B</color>
+    <color name="hud_accent_red">#FFEF4444</color>
+    <color name="hud_accent_cyan">#FF06B6D4</color>
+    <color name="landmark_joint">#FFFFFFFF</color>
+    <color name="landmark_wrist">#FFFF3D00</color>
+    <color name="landmark_bone_left">#FF00E676</color>
+    <color name="landmark_bone_right">#FF00B0FF</color>
 </resources>

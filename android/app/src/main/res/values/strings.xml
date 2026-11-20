@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">EchoGesture</string>
-    <string name="title_diagnostic_hud">EchoGesture Diagnostic HUD</string>
+    <string name="title_diagnostic_hud">EchoGesture Edge HUD</string>
     <string name="label_camera_status">Camera: Initializing...</string>
     <string name="label_camera_ready">Camera: 640x480 @ 30 FPS</string>
     <string name="label_camera_permission_required">Camera permission is required to capture gestures</string>
@@ -8,10 +8,21 @@
     <string name="label_model_ready">Model: INT8 Ready (132.3 KB)</string>
     <string name="label_input_tensor">Input: [1, 64, 263] int8</string>
     <string name="label_output_tensor">Output: [1, 40] int8</string>
-    <string name="label_inference_latency">Latency: -- ms (Invoke: -- ms)</string>
-    <string name="label_recognized_sign">Sign: IDLE</string>
+    <string name="label_inference_latency">Latency: -- ms</string>
+    <string name="label_recognized_sign">IDLE</string>
     <string name="label_confidence">Confidence: 0.0%</string>
+    <string name="label_fps">FPS: 0.0</string>
+    <string name="label_top_candidates">Top Candidates: --</string>
+    <string name="label_latency_breakdown">Pipeline: -- ms</string>
+    <string name="status_waiting_for_hands">Waiting for hands</string>
+    <string name="status_collecting_frames">Collecting frames</string>
+    <string name="status_recognizing">Recognizing gesture...</string>
+    <string name="status_active_prediction">Recognized sign</string>
+    <string name="status_idle">IDLE</string>
+    <string name="status_tracking_lost">Tracking lost</string>
+    <string name="status_camera_unavailable">Camera unavailable</string>
     <string name="action_start">Start Capture</string>
     <string name="action_stop">Stop Capture</string>
+    <string name="action_switch_camera">Switch Camera</string>
     <string name="action_grant_permission">Grant Permission</string>
 </resources>

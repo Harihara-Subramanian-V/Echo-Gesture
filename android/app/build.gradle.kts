@@ -41,10 +41,15 @@ android {
 
     androidResources {
         noCompress += "tflite"
+        noCompress += "task"
     }
 
     buildFeatures {
         viewBinding = true
+    }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 }
 
@@ -64,6 +69,9 @@ dependencies {
 
     // Google AI Edge LiteRT (TensorFlow Lite runtime)
     implementation("com.google.ai.edge.litert:litert:1.4.2")
+
+    // Google MediaPipe Tasks Vision (Hand Landmarker)
+    implementation("com.google.mediapipe:tasks-vision:0.10.20")
 
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
