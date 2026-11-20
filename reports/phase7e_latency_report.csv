@@ -1,0 +1,16 @@
+stage,description,sample_count,mean_ms,median_ms,p90_ms,p95_ms,p99_ms,min_ms,max_ms,std_ms
+convMs,CameraX ImageProxy to Bitmap / MPImage format conversion,1469,0.931,0.75,1.49,1.83,3.1,0.43,13.56,0.666
+rawDetectMs,MediaPipe HandLandmarker neural inference,1469,87.58,79.92,109.944,123.898,200.449,52.59,1939.43,59.304
+detectMs,Total Detection Stage (convMs + rawDetectMs),1469,88.573,80.97,110.712,124.934,203.05,53.11,1953.06,59.651
+featMs,Hungarian slot resolution & 134-D feature vector extraction,1469,0.105,0.079,0.152,0.203,0.411,0.039,3.914,0.151
+resampleMs,LiveTemporalBuffer linear resampling to 64 frames,1469,0.205,0.126,0.303,0.482,1.674,0.062,7.228,0.396
+prepMs,263-D normalization & inter-frame velocity extraction,1469,0.527,0.295,1.139,1.567,2.727,0.189,21.812,0.867
+quantMs,"Affine asymmetric INT8 quantization (16,832 floats)",1469,5.579,4.8,7.65,12.311,15.64,3.774,33.053,2.603
+modelMs,LiteRT INT8 neural model forward execution (Exp D),1469,0.711,0.599,0.952,1.283,2.49,0.451,5.213,0.376
+decMs,Top-5 softmax ranking & confidence dequantization,1469,0.399,0.223,0.722,1.278,2.281,0.133,5.669,0.435
+infMs,Combined inference pipeline (prepMs + quantMs + modelMs + decMs),1469,7.237,6.202,9.928,15.351,20.492,4.732,56.01,3.491
+stabMs,PredictionStabilizer hysteresis filter & state update,1469,0.235,0.172,0.313,0.447,1.493,0.1,8.269,0.34
+totalMs_e2e,End-to-end live recognition cycle (optical capture to HUD display),1469,96.271,88.817,118.159,132.733,217.137,60.763,1970.081,60.135
+totalMs_audit,Live optical frame capture cycle (steady state),1469,88.665,81.13,110.778,125.16,203.27,53.17,1953.24,59.665
+totalMs_bench,Stage-wise inference & recognition loop cycle,1469,7.84,6.679,10.84,16.728,22.843,5.05,63.684,3.835
+fps,Effective live recognition pipeline frame rate (FPS),1469,10.31,10.1,13.7,14.86,15.7,0.0,15.9,3.087
