@@ -23,6 +23,8 @@ import com.google.mediapipe.tasks.vision.handlandmarker.HandLandmarkerResult
  */
 internal interface HandLandmarkerEngine : AutoCloseable {
     val isAvailable: Boolean
+    val lastConversionMs: Double get() = 0.0
+    val lastRawDetectMs: Double get() = 0.0
     fun detect(bitmap: Bitmap, rotationDegrees: Int): HandLandmarkerResult?
     fun detect(imageProxy: ImageProxy): HandLandmarkerResult?
 }
@@ -35,23 +37,45 @@ internal class NativeHandLandmarkerEngine(
 ) : HandLandmarkerEngine {
 
     override val isAvailable: Boolean = true
+    override var lastConversionMs: Double = 0.0
+        private set
+    override var lastRawDetectMs: Double = 0.0
+        private set
 
     override fun detect(bitmap: Bitmap, rotationDegrees: Int): HandLandmarkerResult? {
+        val tConv0 = System.nanoTime()
         val mpImage: MPImage = BitmapImageBuilder(bitmap).build()
         val options = ImageProcessingOptions.builder()
             .setRotationDegrees(rotationDegrees)
             .build()
-        return landmarker.detect(mpImage, options)
+        val tConv1 = System.nanoTime()
+        lastConversionMs = (tConv1 - tConv0) / 1_000_000.0
+
+        val tDetect0 = System.nanoTime()
+        val result = landmarker.detect(mpImage, options)
+        val tDetect1 = System.nanoTime()
+        lastRawDetectMs = (tDetect1 - tDetect0) / 1_000_000.0
+
+        return result
     }
 
     override fun detect(imageProxy: ImageProxy): HandLandmarkerResult? {
+        val tConv0 = System.nanoTime()
         val rotationDegrees = imageProxy.imageInfo.rotationDegrees
         val options = ImageProcessingOptions.builder()
             .setRotationDegrees(rotationDegrees)
             .build()
         val bitmap = imageProxy.toBitmap()
         val mpImage: MPImage = BitmapImageBuilder(bitmap).build()
-        return landmarker.detect(mpImage, options)
+        val tConv1 = System.nanoTime()
+        lastConversionMs = (tConv1 - tConv0) / 1_000_000.0
+
+        val tDetect0 = System.nanoTime()
+        val result = landmarker.detect(mpImage, options)
+        val tDetect1 = System.nanoTime()
+        lastRawDetectMs = (tDetect1 - tDetect0) / 1_000_000.0
+
+        return result
     }
 
     override fun close() {
@@ -68,15 +92,27 @@ internal class HostJvmFallbackEngine(
 
     private var _isClosed = false
     override val isAvailable: Boolean get() = !_isClosed
+    override var lastConversionMs: Double = 0.0
+    override var lastRawDetectMs: Double = 0.0
 
     override fun detect(bitmap: Bitmap, rotationDegrees: Int): HandLandmarkerResult? {
         check(!_isClosed) { "HostJvmFallbackEngine is closed" }
-        return testResultProvider?.invoke(bitmap, null)
+        val t0 = System.nanoTime()
+        val result = testResultProvider?.invoke(bitmap, null)
+        val t1 = System.nanoTime()
+        lastConversionMs = 0.0
+        lastRawDetectMs = (t1 - t0) / 1_000_000.0
+        return result
     }
 
     override fun detect(imageProxy: ImageProxy): HandLandmarkerResult? {
         check(!_isClosed) { "HostJvmFallbackEngine is closed" }
-        return testResultProvider?.invoke(null, imageProxy)
+        val t0 = System.nanoTime()
+        val result = testResultProvider?.invoke(null, imageProxy)
+        val t1 = System.nanoTime()
+        lastConversionMs = 0.0
+        lastRawDetectMs = (t1 - t0) / 1_000_000.0
+        return result
     }
 
     fun setTestResult(result: HandLandmarkerResult?) {
@@ -141,6 +177,12 @@ class HandLandmarkDetector internal constructor(
     override val isClosed: Boolean get() = _isClosed
     override val isInitialized: Boolean get() = !_isClosed && engine.isAvailable
 
+    override val lastConversionMs: Double
+        get() = engine.lastConversionMs
+
+    override val lastRawDetectMs: Double
+        get() = engine.lastRawDetectMs
+
     override fun detect(bitmap: Bitmap, rotationDegrees: Int): List<DetectedHandCandidate> {
         check(!_isClosed) { "HandLandmarkDetector has been closed" }
         return try {
@@ -161,6 +203,16 @@ class HandLandmarkDetector internal constructor(
             Log.e(TAG, "Detection error on ImageProxy: ${e.message}", e)
             emptyList()
         }
+    }
+
+    override fun detectDetailed(imageProxy: ImageProxy): HandDetectionResult {
+        check(!_isClosed) { "HandLandmarkDetector has been closed" }
+        val candidates = detect(imageProxy)
+        return HandDetectionResult(
+            candidates = candidates,
+            conversionMs = engine.lastConversionMs,
+            rawDetectMs = engine.lastRawDetectMs
+        )
     }
 
     override fun close() {

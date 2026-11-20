@@ -5,6 +5,15 @@ import androidx.camera.core.ImageProxy
 import com.echogesture.app.feature.DetectedHandCandidate
 
 /**
+ * Result of hand landmark detection with explicit stage-wise timing.
+ */
+data class HandDetectionResult(
+    val candidates: List<DetectedHandCandidate>,
+    val conversionMs: Double = 0.0,
+    val rawDetectMs: Double = 0.0
+)
+
+/**
  * Contract for hand landmark detection, abstracting the vision pipeline from the underlying
  * inference engine (Google MediaPipe Tasks Vision or test stubs).
  *
@@ -27,6 +36,16 @@ interface IHandLandmarkDetector : AutoCloseable {
     val isClosed: Boolean
 
     /**
+     * Latency of frame conversion (e.g. ImageProxy to Bitmap / MPImage) in milliseconds.
+     */
+    val lastConversionMs: Double get() = 0.0
+
+    /**
+     * Latency of raw MediaPipe hand landmark inference in milliseconds.
+     */
+    val lastRawDetectMs: Double get() = 0.0
+
+    /**
      * Synchronously detects hand landmarks from an Android [Bitmap].
      *
      * @param bitmap Input bitmap image in ARGB_8888 or RGB_565 format.
@@ -46,6 +65,21 @@ interface IHandLandmarkDetector : AutoCloseable {
      * @return List of detected hand candidates, up to 2 hands. Empty if no hands detected.
      */
     fun detect(imageProxy: ImageProxy): List<DetectedHandCandidate>
+
+    /**
+     * Synchronously detects hand landmarks with explicit stage-wise timing.
+     *
+     * @param imageProxy CameraX frame buffer.
+     * @return [HandDetectionResult] containing candidates and conversion/rawDetect timings.
+     */
+    fun detectDetailed(imageProxy: ImageProxy): HandDetectionResult {
+        val candidates = detect(imageProxy)
+        return HandDetectionResult(
+            candidates = candidates,
+            conversionMs = lastConversionMs,
+            rawDetectMs = lastRawDetectMs
+        )
+    }
 
     /**
      * Releases underlying MediaPipe TaskRunner and native pipeline resources.

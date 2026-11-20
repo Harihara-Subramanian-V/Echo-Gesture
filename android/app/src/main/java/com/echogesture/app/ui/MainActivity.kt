@@ -3,7 +3,9 @@ package com.echogesture.app.ui
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
+import android.view.Choreographer
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,7 @@ import com.echogesture.app.preprocessing.SequenceNormalizer
 import com.echogesture.app.preprocessing.SequencePreprocessor263D
 import com.echogesture.app.stabilization.RecognitionState
 import com.echogesture.app.vision.HandLandmarkDetector
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +33,32 @@ class MainActivity : AppCompatActivity() {
     private var cameraController: CameraController? = null
     private var pipeline: RecognitionPipeline? = null
     private var isCapturing = true
+
+    // Real-time Preview / Display Rendering FPS measurement
+    private var previewFrameCount = 0
+    private var lastPreviewFpsTimestamp = 0L
+    private var previewFps = 0.0
+
+    private val frameCallback = object : Choreographer.FrameCallback {
+        override fun doFrame(frameTimeNanos: Long) {
+            previewFrameCount++
+            val nowMs = SystemClock.elapsedRealtime()
+            if (lastPreviewFpsTimestamp == 0L) {
+                lastPreviewFpsTimestamp = nowMs
+            } else {
+                val span = nowMs - lastPreviewFpsTimestamp
+                if (span >= 1000L) {
+                    previewFps = previewFrameCount * 1000.0 / span
+                    Log.d("PREVIEW_FPS", "PREVIEW_FPS: previewFps=${String.format(Locale.US, "%.1f", previewFps)}")
+                    previewFrameCount = 0
+                    lastPreviewFpsTimestamp = nowMs
+                }
+            }
+            if (!isFinishing && !isDestroyed) {
+                Choreographer.getInstance().postFrameCallback(this)
+            }
+        }
+    }
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -51,6 +80,129 @@ class MainActivity : AppCompatActivity() {
         initializePipeline()
         setupListeners()
         checkCameraPermission()
+        handleIntent(intent)
+    }
+
+    override fun onNewIntent(intent: android.content.Intent?) {
+        super.onNewIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: android.content.Intent?) {
+        if (intent?.hasExtra("benchmark") == true) {
+            val frames = intent.getIntExtra("frames", 500)
+            runDetailedBenchmark(frames)
+        }
+    }
+
+    private fun runDetailedBenchmark(targetFrames: Int = 500) {
+        val p = pipeline ?: return
+        Thread {
+            Log.i(TAG, "STARTING_BENCHMARK: targetFrames=$targetFrames")
+
+            // 1. Vision Benchmark on 640x480 Bitmap (50 iterations)
+            try {
+                val bmp = android.graphics.Bitmap.createBitmap(640, 480, android.graphics.Bitmap.Config.ARGB_8888)
+                for (j in 1..50) {
+                    val t0 = System.nanoTime()
+                    p.detector.detect(bmp)
+                    val t1 = System.nanoTime()
+                    val totalMs = (t1 - t0) / 1_000_000.0
+                    Log.i(
+                        TAG,
+                        "BENCH_VISION: iter=$j convMs=${String.format(Locale.US, "%.2f", p.detector.lastConversionMs)} " +
+                        "rawDetectMs=${String.format(Locale.US, "%.2f", p.detector.lastRawDetectMs)} " +
+                        "totalMs=${String.format(Locale.US, "%.2f", totalMs)}"
+                    )
+                }
+                bmp.recycle()
+            } catch (e: Exception) {
+                Log.w(TAG, "Vision benchmark warning: ${e.message}")
+            }
+
+            // 2. Full Recognition & Inference Loop Benchmark (targetFrames iterations)
+            val dummyCandidate = com.echogesture.app.feature.DetectedHandCandidate(
+                label = "Right",
+                score = 0.95f,
+                landmarks63 = FloatArray(63) { (it % 21) * 0.04f + 0.1f },
+                wristX = 0.5f,
+                wristY = 0.5f
+            )
+            val candidates = listOf(dummyCandidate)
+
+            for (i in 1..targetFrames) {
+                val tStart = System.nanoTime()
+
+                // Stage 2: Slot Resolution + 134-D Feature Extraction
+                val tFeat0 = System.nanoTime()
+                val slots = p.slotResolver.resolve(candidates)
+                val frame134 = p.featureExtractor.extract(slots, 640, 480)
+                val tFeat1 = System.nanoTime()
+                val featMs = (tFeat1 - tFeat0) / 1_000_000.0
+
+                // Stage 3: Temporal Buffer FIFO
+                p.temporalBuffer.addFrame(frame134, true)
+                val count = p.temporalBuffer.size
+
+                var resampleMs = 0.0
+                var prepMs = 0.0
+                var quantMs = 0.0
+                var modelMs = 0.0
+                var decMs = 0.0
+                var infMs = 0.0
+                var stabMs = 0.0
+
+                if (count >= p.stabilizer.minFramesForInference) {
+                    val tRes0 = System.nanoTime()
+                    val snapshot = p.temporalBuffer.getResampledSnapshot(64)
+                    val tRes1 = System.nanoTime()
+                    resampleMs = (tRes1 - tRes0) / 1_000_000.0
+
+                    val tInf0 = System.nanoTime()
+                    val detInf = p.inferenceEngine.predictDetailed(snapshot)
+                    val tInf1 = System.nanoTime()
+                    infMs = (tInf1 - tInf0) / 1_000_000.0
+
+                    prepMs = detInf.preprocessMs
+                    quantMs = detInf.quantizeMs
+                    modelMs = detInf.modelMs
+                    decMs = detInf.decodeMs
+
+                    val tStab0 = System.nanoTime()
+                    val rawPred = com.echogesture.app.stabilization.RawPrediction(
+                        className = detInf.predictionResult.topClassName,
+                        classId = detInf.predictionResult.topClassId,
+                        confidence = detInf.predictionResult.topConfidence,
+                        top3 = detInf.predictionResult.top5.take(3).map { com.echogesture.app.stabilization.ClassPrediction(it) }
+                    )
+                    p.stabilizer.update(rawPred, true, count)
+                    val tStab1 = System.nanoTime()
+                    stabMs = (tStab1 - tStab0) / 1_000_000.0
+                }
+
+                val tTotal = (System.nanoTime() - tStart) / 1_000_000.0
+
+                Log.i(
+                    TAG,
+                    "BENCH_STAGE: frame=$i featMs=${String.format(Locale.US, "%.3f", featMs)} " +
+                    "resampleMs=${String.format(Locale.US, "%.3f", resampleMs)} " +
+                    "prepMs=${String.format(Locale.US, "%.3f", prepMs)} " +
+                    "quantMs=${String.format(Locale.US, "%.3f", quantMs)} " +
+                    "modelMs=${String.format(Locale.US, "%.3f", modelMs)} " +
+                    "decMs=${String.format(Locale.US, "%.3f", decMs)} " +
+                    "infMs=${String.format(Locale.US, "%.3f", infMs)} " +
+                    "stabMs=${String.format(Locale.US, "%.3f", stabMs)} " +
+                    "totalMs=${String.format(Locale.US, "%.3f", tTotal)}"
+                )
+
+                try {
+                    Thread.sleep(5)
+                } catch (_: InterruptedException) {
+                    break
+                }
+            }
+            Log.i(TAG, "COMPLETED_BENCHMARK: frames=$targetFrames")
+        }.start()
     }
 
     private fun initializePipeline() {
@@ -218,8 +370,21 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        previewFrameCount = 0
+        lastPreviewFpsTimestamp = 0L
+        Choreographer.getInstance().postFrameCallback(frameCallback)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Choreographer.getInstance().removeFrameCallback(frameCallback)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+        Choreographer.getInstance().removeFrameCallback(frameCallback)
         cameraController?.shutdown()
         pipeline?.close()
     }

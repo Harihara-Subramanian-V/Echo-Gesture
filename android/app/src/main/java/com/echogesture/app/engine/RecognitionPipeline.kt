@@ -25,9 +25,15 @@ import java.util.concurrent.atomic.AtomicBoolean
  * Breakdown of latency stages (all values in milliseconds).
  */
 data class PipelineLatencies(
+    val conversionMs: Double = 0.0,
+    val rawDetectMs: Double = 0.0,
     val detectionMs: Double = 0.0,
     val featureMs: Double = 0.0,
+    val resampleMs: Double = 0.0,
     val preprocessMs: Double = 0.0,
+    val quantizeMs: Double = 0.0,
+    val modelMs: Double = 0.0,
+    val decodeMs: Double = 0.0,
     val inferenceMs: Double = 0.0,
     val stabilizationMs: Double = 0.0,
     val totalMs: Double = 0.0
@@ -118,9 +124,16 @@ class RecognitionPipeline(
 
             // 1. MediaPipe Hand Landmark Detection
             val t0 = System.nanoTime()
-            val detectedHands = detector.detect(imageProxy)
+            val detectionResult = detector.detectDetailed(imageProxy)
             val t1 = System.nanoTime()
+            val detectedHands = detectionResult.candidates
             val detectionMs = (t1 - t0) / 1_000_000.0
+            val conversionMs = detectionResult.conversionMs
+            val rawDetectMs = if (detectionResult.rawDetectMs > 0.0) {
+                detectionResult.rawDetectMs
+            } else {
+                (detectionMs - conversionMs).coerceAtLeast(0.0)
+            }
 
             // 2. Hand Slot Resolution & 134-D Feature Extraction
             val resolvedSlots = slotResolver.resolve(detectedHands)
@@ -133,23 +146,33 @@ class RecognitionPipeline(
             temporalBuffer.addFrame(frame134, hasHands)
             val bufferCount = temporalBuffer.size
 
+            var resampleMs = 0.0
             var preprocessMs = 0.0
+            var quantizeMs = 0.0
+            var modelMs = 0.0
+            var decodeMs = 0.0
             var inferenceMs = 0.0
             var stabilizationMs = 0.0
             var stabilizedState: StabilizedPredictionState
 
             // 4. Inference & Stabilization Execution
             if (hasHands && bufferCount >= stabilizer.minFramesForInference) {
-                val tPre0 = System.nanoTime()
+                val tRes0 = System.nanoTime()
                 val sequenceSnapshot = temporalBuffer.getResampledSnapshot(64)
-                val tPre1 = System.nanoTime()
-                preprocessMs = (tPre1 - tPre0) / 1_000_000.0
+                val tRes1 = System.nanoTime()
+                resampleMs = (tRes1 - tRes0) / 1_000_000.0
 
-                // LiteRT INT8 Model Inference
+                // LiteRT INT8 Model Inference with detailed stage timing
                 val tInf0 = System.nanoTime()
-                val predictionResult = inferenceEngine.predict(sequenceSnapshot)
+                val detailedResult = inferenceEngine.predictDetailed(sequenceSnapshot)
                 val tInf1 = System.nanoTime()
                 inferenceMs = (tInf1 - tInf0) / 1_000_000.0
+
+                val predictionResult = detailedResult.predictionResult
+                preprocessMs = detailedResult.preprocessMs
+                quantizeMs = detailedResult.quantizeMs
+                modelMs = detailedResult.modelMs
+                decodeMs = detailedResult.decodeMs
 
                 // Stabilization
                 val tStab0 = System.nanoTime()
@@ -173,9 +196,15 @@ class RecognitionPipeline(
             val totalMs = (tEndTotal - tStartTotal) / 1_000_000.0
 
             val latencies = PipelineLatencies(
+                conversionMs = conversionMs,
+                rawDetectMs = rawDetectMs,
                 detectionMs = detectionMs,
                 featureMs = featureMs,
+                resampleMs = resampleMs,
                 preprocessMs = preprocessMs,
+                quantizeMs = quantizeMs,
+                modelMs = modelMs,
+                decodeMs = decodeMs,
                 inferenceMs = inferenceMs,
                 stabilizationMs = stabilizationMs,
                 totalMs = totalMs
@@ -192,6 +221,25 @@ class RecognitionPipeline(
                 isFrontCamera = isFrontCamera,
                 consecutiveIdleFrames = stabilizedState.consecutiveIdleFrames,
                 bufferFill = bufferCount
+            )
+
+            // Per-frame detailed audit telemetry
+            Log.i(
+                TAG,
+                "AUDIT_FRAME: frame=$frameIndex convMs=${String.format(java.util.Locale.US, "%.2f", latencies.conversionMs)} " +
+                "rawDetectMs=${String.format(java.util.Locale.US, "%.2f", latencies.rawDetectMs)} " +
+                "detectMs=${String.format(java.util.Locale.US, "%.2f", latencies.detectionMs)} " +
+                "featMs=${String.format(java.util.Locale.US, "%.2f", latencies.featureMs)} " +
+                "resampleMs=${String.format(java.util.Locale.US, "%.2f", latencies.resampleMs)} " +
+                "prepMs=${String.format(java.util.Locale.US, "%.2f", latencies.preprocessMs)} " +
+                "quantMs=${String.format(java.util.Locale.US, "%.2f", latencies.quantizeMs)} " +
+                "modelMs=${String.format(java.util.Locale.US, "%.2f", latencies.modelMs)} " +
+                "decMs=${String.format(java.util.Locale.US, "%.2f", latencies.decodeMs)} " +
+                "infMs=${String.format(java.util.Locale.US, "%.2f", latencies.inferenceMs)} " +
+                "stabMs=${String.format(java.util.Locale.US, "%.2f", latencies.stabilizationMs)} " +
+                "totalMs=${String.format(java.util.Locale.US, "%.2f", latencies.totalMs)} " +
+                "fps=${String.format(java.util.Locale.US, "%.1f", uiState.fps)} " +
+                "hands=${detectedHands.size} state=${uiState.state} sign=${uiState.recognizedSign}"
             )
 
             if (frameIndex % 15 == 0) {

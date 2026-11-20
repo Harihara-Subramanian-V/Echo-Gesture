@@ -328,9 +328,10 @@ class LiteRtModelRunner @JvmOverloads constructor(
 
     private fun loadModelFromAssets(context: Context, assetPath: String): ByteBuffer {
         return try {
-            val afd = context.assets.openFd(assetPath)
-            FileInputStream(afd.fileDescriptor).use { fis ->
-                fis.channel.map(FileChannel.MapMode.READ_ONLY, afd.startOffset, afd.declaredLength)
+            context.assets.openFd(assetPath).use { afd ->
+                FileInputStream(afd.fileDescriptor).use { fis ->
+                    fis.channel.map(FileChannel.MapMode.READ_ONLY, afd.startOffset, afd.declaredLength)
+                }
             }
         } catch (e: Exception) {
             val bytes = context.assets.open(assetPath).use { it.readBytes() }

@@ -1,0 +1,402 @@
+{
+  "scenario_2_empty_scene": {
+    "status": "VERIFIED",
+    "state": "WAITING_FOR_HANDS",
+    "sign": "IDLE",
+    "confidence": 0.0,
+    "notes": "Verified that 0 hands produces IDLE with 0.0 confidence and skips model inference."
+  },
+  "scenario_6_vocabulary_audit": {
+    "book": {
+      "total_samples": 9,
+      "top1_accuracy": 0.8888888888888888,
+      "top3_accuracy": 0.8888888888888888,
+      "avg_confidence": 0.9166666666666666,
+      "samples": [
+        {
+          "sample_idx": 1,
+          "top1_predicted": "book",
+          "top1_confidence": 0.98046875,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "book",
+          "stabilized_final_conf": 0.9828125
+        },
+        {
+          "sample_idx": 40,
+          "top1_predicted": "book",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "book",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 41,
+          "top1_predicted": "book",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "book",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 52,
+          "top1_predicted": "book",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "book",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 82,
+          "top1_predicted": "book",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "book",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 83,
+          "top1_predicted": "book",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "book",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 116,
+          "top1_predicted": "book",
+          "top1_confidence": 0.9453125,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "book",
+          "stabilized_final_conf": 0.95234375
+        },
+        {
+          "sample_idx": 129,
+          "top1_predicted": "many",
+          "top1_confidence": 0.40625,
+          "top1_correct": false,
+          "in_top3": false,
+          "stabilized_final_sign": "what",
+          "stabilized_final_conf": 0.4345703125
+        },
+        {
+          "sample_idx": 195,
+          "top1_predicted": "book",
+          "top1_confidence": 0.9375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "book",
+          "stabilized_final_conf": 0.94375
+        }
+      ]
+    },
+    "computer": {
+      "total_samples": 2,
+      "top1_accuracy": 1.0,
+      "top3_accuracy": 1.0,
+      "avg_confidence": 0.94140625,
+      "samples": [
+        {
+          "sample_idx": 115,
+          "top1_predicted": "computer",
+          "top1_confidence": 0.9765625,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "computer",
+          "stabilized_final_conf": 0.97890625
+        },
+        {
+          "sample_idx": 183,
+          "top1_predicted": "computer",
+          "top1_confidence": 0.90625,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "computer",
+          "stabilized_final_conf": 0.8578125
+        }
+      ]
+    },
+    "drink": {
+      "total_samples": 1,
+      "top1_accuracy": 1.0,
+      "top3_accuracy": 1.0,
+      "avg_confidence": 0.5390625,
+      "samples": [
+        {
+          "sample_idx": 32,
+          "top1_predicted": "drink",
+          "top1_confidence": 0.5390625,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "drink",
+          "stabilized_final_conf": 0.57578125
+        }
+      ]
+    },
+    "before": {
+      "total_samples": 4,
+      "top1_accuracy": 0.75,
+      "top3_accuracy": 0.75,
+      "avg_confidence": 0.7021484375,
+      "samples": [
+        {
+          "sample_idx": 114,
+          "top1_predicted": "before",
+          "top1_confidence": 0.97265625,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "before",
+          "stabilized_final_conf": 0.975
+        },
+        {
+          "sample_idx": 127,
+          "top1_predicted": "bed",
+          "top1_confidence": 0.32421875,
+          "top1_correct": false,
+          "in_top3": false,
+          "stabilized_final_sign": "IDLE",
+          "stabilized_final_conf": 0.0
+        },
+        {
+          "sample_idx": 180,
+          "top1_predicted": "before",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "before",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 181,
+          "top1_predicted": "before",
+          "top1_confidence": 0.515625,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "before",
+          "stabilized_final_conf": 0.54453125
+        }
+      ]
+    },
+    "chair": {
+      "total_samples": 9,
+      "top1_accuracy": 0.7777777777777778,
+      "top3_accuracy": 1.0,
+      "avg_confidence": 0.8841145833333334,
+      "samples": [
+        {
+          "sample_idx": 3,
+          "top1_predicted": "chair",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "chair",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 16,
+          "top1_predicted": "chair",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "chair",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 17,
+          "top1_predicted": "woman",
+          "top1_confidence": 0.40234375,
+          "top1_correct": false,
+          "in_top3": true,
+          "stabilized_final_sign": "woman",
+          "stabilized_final_conf": 0.38671875
+        },
+        {
+          "sample_idx": 18,
+          "top1_predicted": "chair",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "chair",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 53,
+          "top1_predicted": "chair",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "chair",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 75,
+          "top1_predicted": "chair",
+          "top1_confidence": 0.98828125,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "chair",
+          "stabilized_final_conf": 0.98984375
+        },
+        {
+          "sample_idx": 130,
+          "top1_predicted": "chair",
+          "top1_confidence": 0.98828125,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "chair",
+          "stabilized_final_conf": 0.990625
+        },
+        {
+          "sample_idx": 143,
+          "top1_predicted": "chair",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "chair",
+          "stabilized_final_conf": 0.99609375
+        },
+        {
+          "sample_idx": 178,
+          "top1_predicted": "go",
+          "top1_confidence": 0.59765625,
+          "top1_correct": false,
+          "in_top3": true,
+          "stabilized_final_sign": "go",
+          "stabilized_final_conf": 0.59453125
+        }
+      ]
+    },
+    "candy": {
+      "total_samples": 2,
+      "top1_accuracy": 0.5,
+      "top3_accuracy": 1.0,
+      "avg_confidence": 0.89453125,
+      "samples": [
+        {
+          "sample_idx": 6,
+          "top1_predicted": "candy",
+          "top1_confidence": 0.9765625,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "candy",
+          "stabilized_final_conf": 0.97421875
+        },
+        {
+          "sample_idx": 194,
+          "top1_predicted": "deaf",
+          "top1_confidence": 0.8125,
+          "top1_correct": false,
+          "in_top3": true,
+          "stabilized_final_sign": "deaf",
+          "stabilized_final_conf": 0.80078125
+        }
+      ]
+    },
+    "orange": {
+      "total_samples": 6,
+      "top1_accuracy": 0.6666666666666666,
+      "top3_accuracy": 0.8333333333333334,
+      "avg_confidence": 0.7955729166666666,
+      "samples": [
+        {
+          "sample_idx": 26,
+          "top1_predicted": "deaf",
+          "top1_confidence": 0.27734375,
+          "top1_correct": false,
+          "in_top3": false,
+          "stabilized_final_sign": "IDLE",
+          "stabilized_final_conf": 0.0
+        },
+        {
+          "sample_idx": 55,
+          "top1_predicted": "orange",
+          "top1_confidence": 0.9921875,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "orange",
+          "stabilized_final_conf": 0.9921875
+        },
+        {
+          "sample_idx": 92,
+          "top1_predicted": "orange",
+          "top1_confidence": 0.68359375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "orange",
+          "stabilized_final_conf": 0.63125
+        },
+        {
+          "sample_idx": 111,
+          "top1_predicted": "orange",
+          "top1_confidence": 0.98828125,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "orange",
+          "stabilized_final_conf": 0.9890625
+        },
+        {
+          "sample_idx": 126,
+          "top1_predicted": "no",
+          "top1_confidence": 0.83984375,
+          "top1_correct": false,
+          "in_top3": true,
+          "stabilized_final_sign": "no",
+          "stabilized_final_conf": 0.87109375
+        },
+        {
+          "sample_idx": 147,
+          "top1_predicted": "orange",
+          "top1_confidence": 0.9921875,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "orange",
+          "stabilized_final_conf": 0.9953125
+        }
+      ]
+    },
+    "clothes": {
+      "total_samples": 1,
+      "top1_accuracy": 1.0,
+      "top3_accuracy": 1.0,
+      "avg_confidence": 0.99609375,
+      "samples": [
+        {
+          "sample_idx": 2,
+          "top1_predicted": "clothes",
+          "top1_confidence": 0.99609375,
+          "top1_correct": true,
+          "in_top3": true,
+          "stabilized_final_sign": "clothes",
+          "stabilized_final_conf": 0.99609375
+        }
+      ]
+    }
+  },
+  "scenario_7_slot_resolver": {
+    "status": "VERIFIED",
+    "single_hand_labeled_invariance": true,
+    "duplicate_horizontal_fallback": true,
+    "temporal_hungarian_tracking": true,
+    "notes": "Verified single hand handedness adherence, duplicate label horizontal fallback, and Hungarian temporal tracking swap detection."
+  },
+  "scenario_8_temporary_occlusion": {
+    "status": "VERIFIED",
+    "occlusion_frames_tested": 11,
+    "sign_retained_through_11_frames": true,
+    "recovery_on_reappearance": true,
+    "final_sign": "computer",
+    "final_conf": 0.8833333333333333
+  },
+  "scenario_9_idle_reset": {
+    "status": "VERIFIED",
+    "frame_11_state": "TRACKING_LOST (sign retained: drink)",
+    "frame_12_state": "IDLE (reset triggered, sign cleared to IDLE, conf=0.0)",
+    "frame_13_state": "WAITING_FOR_HANDS (clean idle baseline)"
+  }
+}

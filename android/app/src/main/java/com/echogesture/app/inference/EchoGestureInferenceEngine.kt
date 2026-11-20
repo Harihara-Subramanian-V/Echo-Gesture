@@ -6,6 +6,18 @@ import java.io.File
 import java.nio.ByteBuffer
 
 /**
+ * Granular latency breakdown and prediction result for [EchoGestureInferenceEngine].
+ */
+data class DetailedInferenceResult(
+    val predictionResult: PredictionResult,
+    val preprocessMs: Double = 0.0,
+    val quantizeMs: Double = 0.0,
+    val modelMs: Double = 0.0,
+    val decodeMs: Double = 0.0,
+    val totalInferenceMs: Double = 0.0
+)
+
+/**
  * High-level unified inference engine for EchoGesture.
  *
  * Connects the complete on-device pipeline:
@@ -48,9 +60,20 @@ class EchoGestureInferenceEngine(
      * @return Formatted [PredictionResult] with Top-1 and Top-5 class decisions.
      */
     fun predict(rawSequence: Array<FloatArray>): PredictionResult {
+        return predictDetailed(rawSequence).predictionResult
+    }
+
+    /**
+     * Executes end-to-end inference from variable-length raw 134-D frames with granular stage timing.
+     */
+    fun predictDetailed(rawSequence: Array<FloatArray>): DetailedInferenceResult {
         val prep = preprocessor ?: throw IllegalStateException("SequencePreprocessor263D is required for raw sequence inference")
+        val tPre0 = System.nanoTime()
         prep.processToFlat(rawSequence, flatFeatureBuffer)
-        return predictPreprocessed(flatFeatureBuffer)
+        val tPre1 = System.nanoTime()
+        val prepMs = (tPre1 - tPre0) / 1_000_000.0
+
+        return predictPreprocessedDetailed(flatFeatureBuffer, prepMs)
     }
 
     /**
@@ -75,18 +98,49 @@ class EchoGestureInferenceEngine(
      * Executes inference on already preprocessed flat float array of length 16,832.
      */
     fun predictPreprocessed(flatFeatures16832: FloatArray): PredictionResult {
+        return predictPreprocessedDetailed(flatFeatures16832, 0.0).predictionResult
+    }
+
+    /**
+     * Executes inference on already preprocessed flat float array with granular stage timing.
+     */
+    fun predictPreprocessedDetailed(flatFeatures16832: FloatArray, prepMs: Double = 0.0): DetailedInferenceResult {
         require(flatFeatures16832.size == ModelContract.INPUT_BUFFER_SIZE_BYTES) {
             "Expected ${ModelContract.INPUT_BUFFER_SIZE_BYTES} floats, got ${flatFeatures16832.size}"
         }
 
-        // Quantize directly into LiteRtModelRunner's direct input buffer
+        val tTotal0 = System.nanoTime()
+
+        // 1. Quantize directly into LiteRtModelRunner's direct input buffer
+        val tQuant0 = System.nanoTime()
         quantizer.quantize(flatFeatures16832, modelRunner.inputBuffer)
+        val tQuant1 = System.nanoTime()
 
-        // Execute INT8 model graph
+        // 2. Execute INT8 model graph
+        val tModel0 = System.nanoTime()
         modelRunner.runInference(modelRunner.inputBuffer, modelRunner.outputBuffer)
+        val tModel1 = System.nanoTime()
 
-        // Decode Top-5 predictions from output buffer
-        return decoder.decode(modelRunner.outputBuffer, modelRunner.getClassLabels())
+        // 3. Decode Top-5 predictions from output buffer
+        val tDec0 = System.nanoTime()
+        val result = decoder.decode(modelRunner.outputBuffer, modelRunner.getClassLabels())
+        val tDec1 = System.nanoTime()
+
+        val tTotal1 = System.nanoTime()
+
+        val quantizeMs = (tQuant1 - tQuant0) / 1_000_000.0
+        val modelMs = (tModel1 - tModel0) / 1_000_000.0
+        val decodeMs = (tDec1 - tDec0) / 1_000_000.0
+        val totalMs = prepMs + (tTotal1 - tTotal0) / 1_000_000.0
+
+        return DetailedInferenceResult(
+            predictionResult = result,
+            preprocessMs = prepMs,
+            quantizeMs = quantizeMs,
+            modelMs = modelMs,
+            decodeMs = decodeMs,
+            totalInferenceMs = totalMs
+        )
     }
 
     /**
