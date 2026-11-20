@@ -1,0 +1,7 @@
+metric,target,measured,unit,device,runtime,pass
+top1_accuracy,>=70%,65.48%,%,vivo V2416 / PC Reference,TFLite INT8,FAIL
+latency_p95,<=50 ms,1.28 ms (model-only) / 132.73 ms (e2e),ms,vivo V2416 (Snapdragon arm64-v8a),LiteRT INT8 (2 threads XNNPACK),PASS
+model_size,<20 MB,0.13 MB,MB,On-Device Storage,TFLite INT8,PASS
+accuracy_drop_robustness,<=5 percentage points,3.55 pp,pp,vivo V2416 / PC Reference,TFLite INT8,PASS
+avg_power,<=500 mW,NOT_MEASURED,mW,vivo V2416,N/A,NOT_MEASURED
+thermal_drift_10min,<=20%,NOT_MEASURED,%,vivo V2416,Android 16,NOT_MEASURED

@@ -15,30 +15,51 @@ env/
 .venv/
 echogesture_env/
 
-# IDE
+# IDE & Editor
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+*.iml
+.externalNativeBuild/
+.cxx/
 
-# Data - keep raw data out of git
+# Gradle & Android Build Outputs
+.gradle/
+build/
+android/build/
+android/app/build/
+android/.gradle/
+android/.idea/
+android/captures/
+*.apk
+*.aab
+
+# Data - keep raw data and large processed caches out of git
 data/raw/
 data/processed/
 data/landmarks/
 data/splits/
 
-# Models - keep large model files out of git
+# Models - keep large training checkpoints out of git
 models/checkpoints/
 models/exported/
-models/quantized/
+models/quantized/*
 *.h5
 *.pb
 *.tflite
 *.onnx
 *.pth
 
-# Outputs
+# Whitelist production lightweight edge models and assets
+!models/quantized/echogesture_exp_d_int8.tflite
+!android/app/src/main/assets/echogesture_exp_d_int8.tflite
+!model/echogesture_exp_d_int8.tflite
+!submission/model/echogesture_exp_d_int8.tflite
+!android/app/src/main/assets/hand_landmarker.task
+
+# Outputs & Logs
 outputs/
 *.log
 
@@ -50,7 +71,11 @@ Thumbs.db
 .ipynb_checkpoints/
 *.ipynb
 
-# Environment files
+# Environment files, secrets & local properties
 .env
 *.pem
 *.db
+credentials
+*credentials*
+local.properties
+android/local.properties
